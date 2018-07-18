@@ -1,0 +1,69 @@
+{
+  "name": "react-mock-component",
+  "version": "0.0.1",
+  "description": "Create type safe mock React components to use in tests",
+  "keywords": [
+    "tdd",
+    "react",
+    "spy",
+    "stub",
+    "mock",
+    "test",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NiGhTTraX/react-mock-component.git"
+  },
+  "main": "dist/src/index",
+  "types": "dist/src/index",
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc --declaration --outDir ./dist",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint --ext ts .",
+    "test": "TS_NODE_CACHE=0 mocha --opts tests/mocha.opts",
+    "test:coverage": "NODE_ENV=coverage nyc mocha --opts tests/mocha.coverage.opts",
+    "report-coverage": "nyc report --reporter=json && codecov -f tests/results/coverage/coverage-final.json",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": "eslint"
+  },
+  "author": "Andrei Picus",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "~4.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^2.8"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.0.0-beta.47",
+    "@babel/preset-env": "~7.0.0-beta.47",
+    "@babel/preset-typescript": "~7.0.0-beta.47",
+    "@babel/register": "~7.0.0-beta.47",
+    "@nighttrax/eslint-config": "~1.0.1",
+    "@types/mocha": "~5.2.0",
+    "@types/node": "~10.1.2",
+    "babel-plugin-istanbul": "~4.1.6",
+    "codecov": "~3.0.2",
+    "eslint": "~4.19.1",
+    "eslint-import-resolver-babel-module": "~4.0.0",
+    "eslint-plugin-import": "~2.12.0",
+    "eslint-plugin-jsx-a11y": "~6.0.3",
+    "eslint-plugin-react": "~7.8.2",
+    "eslint-plugin-typescript": "~0.12.0",
+    "husky": "~0.14.3",
+    "lint-staged": "~7.1.1",
+    "mocha": "~5.2.0",
+    "nyc": "~11.8.0",
+    "ts-node": "~6.0.0",
+    "typescript": "^2.8",
+    "typescript-eslint-parser": "~15.0.0"
+  },
+  "files": [
+    "dist/src/**/*"
+  ]
+}

@@ -1,0 +1,4 @@
+node_modules
+dist
+tests/results
+.nyc_output
