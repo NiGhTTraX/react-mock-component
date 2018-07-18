@@ -17,7 +17,7 @@ export interface ReactMock<Props> {
 }
 
 // eslint-disable-next-line space-infix-ops
-type ReactStub<Props> = React.StatelessComponent<Props> & ReactMock<Props>;
+export type ReactStub<Props> = React.StatelessComponent<Props> & ReactMock<Props>;
 
 // eslint-disable-next-line max-len
 export function createReactStub<Props>(): ReactStub<Props> {
