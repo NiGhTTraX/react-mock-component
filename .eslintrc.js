@@ -15,7 +15,7 @@ module.exports = {
     'import/resolver': {
       'node': {
         'extensions': [
-          '.js', '.ts'
+          '.js', '.ts', '.tsx'
         ]
       },
       'babel-module': { }
