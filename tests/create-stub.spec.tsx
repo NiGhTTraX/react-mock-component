@@ -7,7 +7,7 @@ import { BarProps, Foo } from './test-components';
 describe('createStub', () => {
   it('should stub render calls', function () {
     const Bar = createReactStub<BarProps>();
-    Bar.withProps({ bar: 42 }).renders(<span>I am Bar</span>).verifiable();
+    Bar.withProps({ bar: 42 }).renders(<span>I am Bar</span>);
 
     const $foo = $render(<Foo Bar={Bar} />);
 

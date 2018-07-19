@@ -1,18 +1,16 @@
 import { IMock, It, Mock } from 'typemoq';
 import * as React from 'react';
-// eslint-disable-next-line import/no-unresolved
-import { IReturnsResult } from 'typemoq/Api/IReturns';
 import { spy, assert } from 'sinon';
 
 // Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
 export type JSX = React.ReactElement<any> | null;
 
-export interface ReactMockExpectation<Props> {
-  renders: (jsx: JSX) => IReturnsResult<Props>;
+export interface ReactMockExpectation {
+  renders: (jsx: JSX) => void;
 }
 
 export interface ReactMock<Props> {
-  withProps: (expected: Partial<Props>) => ReactMockExpectation<Props>;
+  withProps: (expected: Partial<Props>) => ReactMockExpectation;
   verifyAll: () => void;
 }
 
@@ -36,7 +34,7 @@ export function createReactStub<Props>(): ReactStub<Props> {
     );
 
     return Object.assign(expectation, {
-      renders: (jsx: JSX) => expectation.returns(() => jsx)
+      renders: (jsx: JSX) => expectation.returns(() => jsx).verifiable()
     });
   };
 
