@@ -11,28 +11,34 @@ export interface ReactMockExpectation {
 export interface ReactMock<Props> {
   withProps: (expected: Partial<Props>) => ReactMockExpectation;
   renderedWith: (props: Partial<Props>) => boolean;
+  lastProps: Props;
 }
 
 // eslint-disable-next-line space-infix-ops
-export type ReactStub<Props> = React.StatelessComponent<Props> & ReactMock<Props>;
+export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
 
-// eslint-disable-next-line max-len
 export function createReactStub<Props>(): ReactStub<Props> {
-  const render = stub();
+  const renderStub = stub();
 
-  function Stub(props: Props) {
-    // In case there were no expectations set on the stub (spy behavior) we
-    // return something that won't make React throw its hands in the air.
-    return render(props) || null;
-  }
+  return class Stub extends React.Component<Props> {
+    public static withProps(expectedProps: Partial<Props>): ReactMockExpectation {
+      const expectation = renderStub.withArgs(expectedProps);
+      const renders = (jsx: JSX) => expectation.returns(jsx);
+      return { renders };
+    }
 
-  const withProps = (expectedProps: Partial<Props>): ReactMockExpectation => {
-    const expectation = render.withArgs(expectedProps);
-    const renders = (jsx: JSX) => expectation.returns(jsx);
-    return { renders };
+    public static renderedWith(props: Partial<Props>): boolean {
+      return renderStub.calledWithMatch(props);
+    }
+
+    public static get lastProps() {
+      return renderStub.lastCall.args[0];
+    }
+
+    render() {
+      // In case there were no expectations set on the stub (spy behavior) we
+      // return something that won't make React throw its hands in the air.
+      return renderStub(this.props) || null;
+    }
   };
-
-  const renderedWith = (props: Partial<Props>): boolean => render.calledWithMatch(props);
-
-  return Object.assign(Stub, { withProps, renderedWith });
 }

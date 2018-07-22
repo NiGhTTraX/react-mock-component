@@ -33,4 +33,12 @@ describe('createStub', () => {
 
     expect(Bar.renderedWith({ bar: 42 })).to.be.true;
   });
+
+  it('should expose the last received props', function() {
+    const Bar = createReactStub<BarProps>();
+
+    $render(<Foo Bar={Bar} />);
+
+    expect(Bar.lastProps).to.deep.equal({ bar: 42 });
+  });
 });
