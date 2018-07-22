@@ -5,18 +5,43 @@ import { stub } from 'sinon';
 export type JSX = React.ReactElement<any> | null;
 
 export interface ReactMockExpectation {
+  /**
+   * Set the return value for when the component receives the previously
+   * expected upon props.
+   *
+   * If there no mocked return values the component will render `null`.
+   * If the component is rendered with unexpected props it will return
+   * `undefined`.
+   */
   renders: (jsx: JSX) => void;
 }
 
 export interface ReactMock<Props> {
+  /**
+   * Set an expectation on the props the component will be rendered with.
+   *
+   * This call alone does nothing unless chained with `renders`.
+   * @see ReactMockExpectation.renders
+   */
   withProps: (expected: Partial<Props>) => ReactMockExpectation;
+
+  /**
+   * See whether the component was ever rendered with the given props.
+   */
   renderedWith: (props: Partial<Props>) => boolean;
+
+  /**
+   * Get the props the component received in the last render call.
+   */
   lastProps: Props;
 }
 
 // eslint-disable-next-line space-infix-ops
 export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
 
+/**
+ * Create a mock component of the given type.
+ */
 export function createReactStub<Props>(): ReactStub<Props> {
   const renderStub = stub();
 
