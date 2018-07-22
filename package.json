@@ -34,10 +34,10 @@
   "author": "Andrei Picus",
   "license": "MIT",
   "dependencies": {
-    "sinon": "latest"
+    "sinon": "~6.1.4"
   },
   "peerDependencies": {
-    "react": "latest",
+    "react": "~16.4.1",
     "typescript": "^2.8"
   },
   "devDependencies": {
@@ -70,7 +70,7 @@
     "lint-staged": "~7.1.1",
     "mocha": "~5.2.0",
     "nyc": "~11.8.0",
-    "react": "latest",
+    "react": "~16.4.1",
     "react-dom": "~16.4.1",
     "ts-node": "~6.0.0",
     "typescript": "^2.8",
