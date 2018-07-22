@@ -13,4 +13,12 @@ describe('createStub', () => {
 
     expect($foo.text()).to.contain('I am Bar');
   });
+
+  it('should spy on render calls', function () {
+    const Bar = createReactStub<BarProps>();
+
+    $render(<Foo Bar={Bar} />);
+
+    expect(Bar.renderedWith({ bar: 42 })).to.be.true;
+  });
 });
