@@ -37,7 +37,7 @@
     "sinon": "~6.1.4"
   },
   "peerDependencies": {
-    "react": "~16.4.1",
+    "react": "^16",
     "typescript": "^2.8"
   },
   "devDependencies": {
