@@ -14,6 +14,18 @@ describe('createStub', () => {
     expect($foo.text()).to.contain('I am Bar');
   });
 
+  it('should stub multiple render calls', function() {
+    const Bar = createReactStub<BarProps>();
+    Bar.withProps({ bar: 1 }).renders(<span>call 1</span>);
+    Bar.withProps({ bar: 2 }).renders(<span>call 2</span>);
+
+    const $foo = $render(<Foo Bar={Bar} testbar={1} />);
+    expect($foo.text()).to.contain('call 1');
+
+    $render(<Foo Bar={Bar} testbar={2} />);
+    expect($foo.text()).to.contain('call 2');
+  });
+
   it('should spy on render calls', function () {
     const Bar = createReactStub<BarProps>();
 

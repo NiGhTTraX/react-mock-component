@@ -7,11 +7,16 @@ export interface BarProps {
 export interface FooProps {
   // eslint-disable-next-line no-use-before-define
   Bar: React.ComponentType<BarProps>;
+  testbar?: number;
 }
 
 export class Foo extends React.Component<FooProps> {
+  public static defaultProps: Partial<FooProps> = {
+    testbar: 42
+  };
+
   render() {
-    const { Bar } = this.props;
-    return <Bar bar={42} />;
+    const { Bar, testbar } = this.props;
+    return <Bar bar={testbar as number} />;
   }
 }
