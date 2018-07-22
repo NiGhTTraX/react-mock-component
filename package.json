@@ -37,8 +37,7 @@
     "sinon": "~6.1.4"
   },
   "peerDependencies": {
-    "react": "^16",
-    "typescript": "^2.8"
+    "react": "^16"
   },
   "devDependencies": {
     "@babel/core": "~7.0.0-beta.47",
@@ -73,7 +72,7 @@
     "react": "~16.4.1",
     "react-dom": "~16.4.1",
     "ts-node": "~6.0.0",
-    "typescript": "^2.8",
+    "typescript": "~2.9.2",
     "typescript-eslint-parser": "~15.0.0"
   },
   "files": [
