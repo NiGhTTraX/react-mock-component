@@ -26,6 +26,33 @@ describe('createStub', () => {
     expect($foo.text()).to.contain('call 2');
   });
 
+  describe('partial props', function() {
+    interface MultipleProps {
+      foo1: number;
+      foo2: number;
+    }
+
+    const X = ({ MultipleProps }: { MultipleProps: React.ComponentType<MultipleProps> }) =>
+      <MultipleProps foo1={1} foo2={2} />;
+
+    it('should stub render calls', function() {
+      const M = createReactStub<MultipleProps>();
+      M.withProps({ foo1: 1 }).renders(<span>foobar</span>);
+
+      const $x = $render(<X MultipleProps={M} />);
+
+      expect($x.text()).to.contain('foobar');
+    });
+
+    it('should spy on render calls', function() {
+      const M = createReactStub<MultipleProps>();
+
+      $render(<X MultipleProps={M} />);
+
+      expect(M.renderedWith({ foo1: 1 })).to.be.true;
+    });
+  });
+
   it('should spy on render calls', function () {
     const Bar = createReactStub<BarProps>();
 

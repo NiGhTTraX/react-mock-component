@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { stub } from 'sinon';
+import { stub, match } from 'sinon';
 
 // Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
 export type JSX = React.ReactElement<any> | null;
@@ -22,6 +22,9 @@ export interface ReactMock<Props> {
    *
    * This call alone does nothing unless chained with `renders`.
    * @see ReactMockExpectation.renders
+   *
+   * The expected props will be shallowly matched against the props
+   * received by the component.
    */
   withProps: (expected: Partial<Props>) => ReactMockExpectation;
 
@@ -47,7 +50,7 @@ export function createReactStub<Props>(): ReactStub<Props> {
 
   return class Stub extends React.Component<Props> {
     public static withProps(expectedProps: Partial<Props>): ReactMockExpectation {
-      const expectation = renderStub.withArgs(expectedProps);
+      const expectation = renderStub.withArgs(match(expectedProps));
       const renders = (jsx: JSX) => expectation.returns(jsx);
       return { renders };
     }
