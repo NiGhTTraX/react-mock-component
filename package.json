@@ -34,7 +34,6 @@
   "author": "Andrei Picus",
   "license": "MIT",
   "dependencies": {
-    "typemoq": "latest",
     "sinon": "latest"
   },
   "peerDependencies": {

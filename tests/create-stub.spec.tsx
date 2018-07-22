@@ -11,7 +11,6 @@ describe('createStub', () => {
 
     const $foo = $render(<Foo Bar={Bar} />);
 
-    Bar.verifyAll();
     expect($foo.text()).to.contain('I am Bar');
   });
 });
