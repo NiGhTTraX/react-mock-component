@@ -1,11 +1,11 @@
 {
   "include": [
-    "src/**/*.ts"
+    "src/**/*.{ts,tsx}"
   ],
   "exclude": [
     "**/*.d.ts"
   ],
-  "extension": [".ts"],
+  "extension": [".ts", ".tsx"],
   "all": true,
 
   "sourceMap": false,

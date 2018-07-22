@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import { ReactElement } from 'react';
-import * as $ from 'jquery';
+import $ from 'jquery';
 
 const _container = document.createElement('div');
 
