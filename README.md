@@ -23,3 +23,6 @@ const $foo = $render(<Foo Bar={Bar} />);
 Bar.renderedWith({ bar: 42 }); // true
 expect($foo.text()).to.contain('fake content');
 ```
+
+You can of course use this library without TypeScript, you just won't
+get any errors if you for instance check for the wrong prop.
