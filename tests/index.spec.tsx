@@ -2,9 +2,29 @@ import * as React from 'react';
 import { expect } from 'chai';
 import { createReactStub } from '../src';
 import { $render } from './render-helper';
-import { BarProps, Foo } from './test-components';
 
 describe('createStub', () => {
+  interface BarProps {
+    bar: number;
+  }
+
+  interface FooProps {
+    // eslint-disable-next-line no-use-before-define
+    Bar: React.ComponentType<BarProps>;
+    testbar?: number;
+  }
+
+  class Foo extends React.Component<FooProps> {
+    public static defaultProps: Partial<FooProps> = {
+      testbar: 42
+    };
+
+    render() {
+      const { Bar, testbar } = this.props;
+      return <Bar bar={testbar as number} />;
+    }
+  }
+
   it('should stub render calls', function () {
     const Bar = createReactStub<BarProps>();
     Bar.withProps({ bar: 42 }).renders(<span>I am Bar</span>);
@@ -24,33 +44,6 @@ describe('createStub', () => {
 
     $render(<Foo Bar={Bar} testbar={2} />);
     expect($foo.text()).to.contain('call 2');
-  });
-
-  describe('partial props', function() {
-    interface MultipleProps {
-      foo1: number;
-      foo2: number;
-    }
-
-    const X = ({ MultipleProps }: { MultipleProps: React.ComponentType<MultipleProps> }) =>
-      <MultipleProps foo1={1} foo2={2} />;
-
-    it('should stub render calls', function() {
-      const M = createReactStub<MultipleProps>();
-      M.withProps({ foo1: 1 }).renders(<span>foobar</span>);
-
-      const $x = $render(<X MultipleProps={M} />);
-
-      expect($x.text()).to.contain('foobar');
-    });
-
-    it('should spy on render calls', function() {
-      const M = createReactStub<MultipleProps>();
-
-      $render(<X MultipleProps={M} />);
-
-      expect(M.renderedWith({ foo1: 1 })).to.be.true;
-    });
   });
 
   it('should spy on render calls', function () {
@@ -84,5 +77,32 @@ describe('createStub', () => {
     $render(<Foo Bar={Bar} testbar={2} />);
 
     expect(Bar.props).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
+  });
+
+  describe('partial props', function() {
+    interface MultipleProps {
+      foo1: number;
+      foo2: number;
+    }
+
+    const X = ({ MultipleProps }: { MultipleProps: React.ComponentType<MultipleProps> }) =>
+      <MultipleProps foo1={1} foo2={2} />;
+
+    it('should stub render calls', function() {
+      const M = createReactStub<MultipleProps>();
+      M.withProps({ foo1: 1 }).renders(<span>foobar</span>);
+
+      const $x = $render(<X MultipleProps={M} />);
+
+      expect($x.text()).to.contain('foobar');
+    });
+
+    it('should spy on render calls', function() {
+      const M = createReactStub<MultipleProps>();
+
+      $render(<X MultipleProps={M} />);
+
+      expect(M.renderedWith({ foo1: 1 })).to.be.true;
+    });
   });
 });
