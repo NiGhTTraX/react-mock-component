@@ -68,4 +68,12 @@ describe('createStub', () => {
 
     expect(Bar.lastProps).to.deep.equal({ bar: 42 });
   });
+
+  it('should expose whether it was rendered', function() {
+    const Bar = createReactStub<BarProps>();
+
+    expect(Bar.rendered).to.be.false;
+    $render(<Foo Bar={Bar} />);
+    expect(Bar.rendered).to.be.true;
+  });
 });
