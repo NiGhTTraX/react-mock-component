@@ -47,6 +47,11 @@ export interface ReactMock<Props> {
    * Was this component rendered at least once?
    */
   rendered: boolean;
+
+  /**
+   * Get all the props ever received by the mock.
+   */
+  props: Props[];
 }
 
 // eslint-disable-next-line space-infix-ops
@@ -75,6 +80,10 @@ export function createReactStub<Props>(): ReactStub<Props> {
 
     public static get rendered() {
       return renderStub.called;
+    }
+
+    public static get props() {
+      return renderStub.args.map(args => args[0]);
     }
 
     render() {

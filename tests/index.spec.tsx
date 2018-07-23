@@ -76,4 +76,13 @@ describe('createStub', () => {
     $render(<Foo Bar={Bar} />);
     expect(Bar.rendered).to.be.true;
   });
+
+  it('should expose all the received props', function () {
+    const Bar = createReactStub<BarProps>();
+
+    $render(<Foo Bar={Bar} testbar={1} />);
+    $render(<Foo Bar={Bar} testbar={2} />);
+
+    expect(Bar.props).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
+  });
 });
