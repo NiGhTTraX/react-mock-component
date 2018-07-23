@@ -23,13 +23,18 @@ export interface ReactMock<Props> {
    * This call alone does nothing unless chained with `renders`.
    * @see ReactMockExpectation.renders
    *
-   * The expected props will be shallowly matched against the props
-   * received by the component.
+   * @param expected The expected props will be shallowly matched against
+   *   the props received by the component. They can be a subset of the
+   *   props so as to not expose private handlers e.g. when a parent
+   *   component sends a private onClick handler to a Button component.
    */
   withProps: (expected: Partial<Props>) => ReactMockExpectation;
 
   /**
    * See whether the component was ever rendered with the given props.
+   *
+   * @param props A subset of the props.
+   * @see withProps
    */
   renderedWith: (props: Partial<Props>) => boolean;
 
