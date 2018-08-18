@@ -26,3 +26,7 @@ expect($foo.text()).to.contain('fake content');
 
 You can of course use this library without TypeScript, you just won't
 get any errors if you for instance check for the wrong prop.
+
+In an IDE with good support for TypeScript e.g. WebStorm you can get automatic renaming of props across code and tests:
+
+![demo](./demo.gif)
