@@ -79,6 +79,12 @@ describe('createStub', () => {
     expect(Bar.props).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
   });
 
+  it('should expose the sinon stub', function() {
+    const Stub = createReactStub();
+
+    expect(Stub.sinonStub).to.have.property('args');
+  });
+
   describe('partial props', function() {
     interface MultipleProps {
       foo1: number;

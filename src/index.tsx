@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { stub, match } from 'sinon';
+import { stub, match, SinonStub } from 'sinon';
 
 // Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
 export type JSX = React.ReactElement<any> | null;
@@ -50,6 +50,11 @@ export interface ReactMock<Props> {
    * Get all the props ever received by the mock.
    */
   props: Props[];
+
+    /**
+     * The raw Sinon stub used under the hood.
+     */
+  sinonStub: SinonStub;
 }
 
 // eslint-disable-next-line space-infix-ops
@@ -83,6 +88,8 @@ export function createReactStub<Props>(): ReactStub<Props> {
     public static get props() {
       return renderStub.args.map(args => args[0]);
     }
+
+    public static sinonStub = renderStub;
 
     render() {
       // In case there were no expectations set on the stub (spy behavior) we
