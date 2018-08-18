@@ -9,9 +9,7 @@ export interface ReactMockExpectation {
    * Set the return value for when the component receives the previously
    * expected upon props.
    *
-   * If there no mocked return values the component will render `null`.
-   * If the component is rendered with unexpected props it will return
-   * `undefined`.
+   * If there's no matching mocked return calls the component will render `null`.
    */
   renders: (jsx: JSX) => void;
 }
