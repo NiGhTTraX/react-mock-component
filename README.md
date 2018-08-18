@@ -2,6 +2,8 @@
 
 ## Usage
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/NiGhTTraX/react-mock-component.svg)](https://greenkeeper.io/)
+
 ```typescript jsx
 interface BarProps {
   bar: number;
