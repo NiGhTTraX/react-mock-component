@@ -1,6 +1,6 @@
 {
   "name": "react-mock-component",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Create type safe mock React components to use in tests",
   "keywords": [
     "tdd",
