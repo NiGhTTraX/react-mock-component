@@ -11,7 +11,7 @@ export interface ReactMockExpectation<Props> {
    *
    * If there's no matching mocked return calls the component will render `null`.
    */
-  renders: (jsx: JSX) => ReactMock<Props>;
+  renders: (jsx: JSX) => ReactStub<Props>;
 }
 
 export interface ReactMock<Props> {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { expect } from 'chai';
 import { createReactStub } from '../src';
 import { $render } from './render-helper';
+import {ComponentType} from 'react';
 
 describe('createStub', () => {
   interface BarProps {
@@ -88,15 +89,15 @@ describe('createStub', () => {
   it('should return the original stub after an expectation', function() {
     const Stub = createReactStub<BarProps>();
 
-    Stub
+    let ChainedStub: ComponentType<BarProps> = Stub
       .withProps({ bar: 1 }).renders(<span>1</span>)
       .withProps({ bar: 2 }).renders(<span>2</span>);
 
-    let $foo = $render(<Stub bar={1}/>);
-    expect($foo.text()).to.equal('1');
+    let $chainedStub = $render(<ChainedStub bar={1}/>);
+    expect($chainedStub.text()).to.equal('1');
 
-    $foo = $render(<Stub bar={2}/>);
-    expect($foo.text()).to.equal('2');
+    $chainedStub = $render(<ChainedStub bar={2}/>);
+    expect($chainedStub.text()).to.equal('2');
   });
 
   describe('partial props', function() {
