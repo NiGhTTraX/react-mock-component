@@ -4,14 +4,14 @@ import { stub, match, SinonStub } from 'sinon';
 // Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
 export type JSX = React.ReactElement<any> | null;
 
-export interface ReactMockExpectation {
+export interface ReactMockExpectation<Props> {
   /**
    * Set the return value for when the component receives the previously
    * expected upon props.
    *
    * If there's no matching mocked return calls the component will render `null`.
    */
-  renders: (jsx: JSX) => void;
+  renders: (jsx: JSX) => ReactMock<Props>;
 }
 
 export interface ReactMock<Props> {
@@ -26,7 +26,7 @@ export interface ReactMock<Props> {
    *   props so as to not expose private handlers e.g. when a parent
    *   component sends a private onClick handler to a Button component.
    */
-  withProps: (expected: Partial<Props>) => ReactMockExpectation;
+  withProps: (expected: Partial<Props>) => ReactMockExpectation<Props>;
 
   /**
    * See whether the component was ever rendered with the given props.
@@ -67,9 +67,14 @@ export function createReactStub<Props>(): ReactStub<Props> {
   const renderStub = stub();
 
   return class Stub extends React.Component<Props> {
-    public static withProps(expectedProps: Partial<Props>): ReactMockExpectation {
+    public static withProps(expectedProps: Partial<Props>): ReactMockExpectation<Props> {
       const expectation = renderStub.withArgs(match(expectedProps));
-      const renders = (jsx: JSX) => expectation.returns(jsx);
+
+      const renders = (jsx: JSX) => {
+        expectation.returns(jsx);
+        return Stub;
+      };
+
       return { renders };
     }
 

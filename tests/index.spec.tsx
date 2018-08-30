@@ -85,6 +85,20 @@ describe('createStub', () => {
     expect(Stub.sinonStub).to.have.property('args');
   });
 
+  it('should return the original stub after an expectation', function() {
+    const Stub = createReactStub<BarProps>();
+
+    Stub
+      .withProps({ bar: 1 }).renders(<span>1</span>)
+      .withProps({ bar: 2 }).renders(<span>2</span>);
+
+    let $foo = $render(<Stub bar={1}/>);
+    expect($foo.text()).to.equal('1');
+
+    $foo = $render(<Stub bar={2}/>);
+    expect($foo.text()).to.equal('2');
+  });
+
   describe('partial props', function() {
     interface MultipleProps {
       foo1: number;
