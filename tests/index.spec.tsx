@@ -100,6 +100,28 @@ describe('createStub', () => {
     expect($chainedStub.text()).to.equal('2');
   });
 
+  it('should check children', () => {
+    interface WithChildren {
+      children: JSX.Element;
+      foo: number;
+    }
+
+    const Stub = createReactStub<WithChildren>();
+
+    Stub
+      .withProps({ foo: 1, children: <Stub foo={2}><span>children</span></Stub> })
+      .renders(<span>it really worked</span>);
+
+    let $chainedStub = $render(<Stub foo={1}>
+      <Stub foo={2}>
+        <span>children</span>
+      </Stub>
+    </Stub>);
+
+    expect($chainedStub.text()).to.contain('it really worked');
+    expect(Stub.renderedWith({ children: <Stub foo={2}><span>children</span></Stub> })).to.be.true;
+  });
+
   describe('partial props', function() {
     interface MultipleProps {
       foo1: number;
