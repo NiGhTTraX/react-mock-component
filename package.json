@@ -34,7 +34,7 @@
   "author": "Andrei Picus",
   "license": "MIT",
   "dependencies": {
-    "sinon": "~6.1.4"
+    "sinon": "~6.3.0"
   },
   "peerDependencies": {
     "react": "^16"
