@@ -46,7 +46,7 @@
     "@babel/preset-react": "~7.0.0-beta.54",
     "@babel/preset-typescript": "~7.0.0-beta.47",
     "@babel/register": "~7.0.0-beta.47",
-    "@nighttrax/eslint-config": "~1.0.1",
+    "@nighttrax/eslint-config": "~2.1.0",
     "@types/chai": "~4.1.4",
     "@types/jquery": "~3.3.4",
     "@types/jsdom": "11.12.0",
