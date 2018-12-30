@@ -11,17 +11,6 @@ module.exports = {
     '@nighttrax'
   ],
 
-  'settings': {
-    'import/resolver': {
-      'node': {
-        'extensions': [
-          '.js', '.ts', '.tsx'
-        ]
-      },
-      'babel-module': { }
-    }
-  },
-
   'rules': {
     // ESLint doesn't understand interfaces yet and marks them as undefined.
     'no-undef': 0,
