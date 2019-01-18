@@ -76,7 +76,7 @@
     "react-dom": "~16.7.0",
     "ts-node": "~7.0.0",
     "typescript": "~3.2.2",
-    "typescript-eslint-parser": "~21.0.2"
+    "typescript-eslint-parser": "~22.0.0"
   },
   "files": [
     "dist/src/**/*"
