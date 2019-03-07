@@ -53,6 +53,7 @@ describe('createStub', () => {
     $render(<Foo Bar={Bar} />);
 
     expect(Bar.renderedWith({ bar: 42 })).to.be.true;
+    expect(Bar.renderedWith({ bar: 43 })).to.be.false;
   });
 
   it('should expose the last received props', function() {
