@@ -83,6 +83,10 @@ export function createReactStub<Props>(): ReactStub<Props> {
     }
 
     public static get lastProps() {
+      if (!renderStub.called) {
+        throw new Error('Component never rendered!');
+      }
+      
       return renderStub.lastCall.args[0];
     }
 

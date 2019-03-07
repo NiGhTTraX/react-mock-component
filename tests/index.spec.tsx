@@ -63,6 +63,14 @@ describe('createStub', () => {
     expect(Bar.lastProps).to.deep.equal({ bar: 42 });
   });
 
+  it('should not return last props if never rendered', function() {
+    const Bar = createReactStub<BarProps>();
+
+    expect(() => Bar.lastProps).to.throw(
+      'Component never rendered!'
+    );
+  });
+
   it('should expose whether it was rendered', function() {
     const Bar = createReactStub<BarProps>();
 
