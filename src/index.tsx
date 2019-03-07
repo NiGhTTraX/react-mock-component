@@ -1,8 +1,5 @@
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import { stub, match, SinonStub } from 'sinon';
-import {ReactNode} from 'react';
-
-export type JSX = ReactNode;
 
 export interface ReactMockExpectation<Props> {
   /**
@@ -11,7 +8,7 @@ export interface ReactMockExpectation<Props> {
    *
    * If there's no matching mocked return calls the component will render `null`.
    */
-  renders: (jsx: JSX | ((props: Props) => JSX)) => ReactStub<Props>;
+  renders: (jsx: ReactNode | ((props: Props) => ReactNode)) => ReactStub<Props>;
 }
 
 export interface ReactMock<Props> {
@@ -70,7 +67,7 @@ export function createReactMock<Props>(): ReactStub<Props> {
     public static withProps(expectedProps: Partial<Props>): ReactMockExpectation<Props> {
       const expectation = renderStub.withArgs(match(expectedProps));
 
-      const renders = (jsx: JSX | ((props: Props) => JSX)) => {
+      const renders = (jsx: ReactNode | ((props: Props) => ReactNode)) => {
         if (typeof jsx === 'function') {
           expectation.callsFake((props: Props) => jsx(props));
         } else {
