@@ -6,7 +6,10 @@ export interface ReactMockExpectation<Props> {
    * Set the return value for when the component receives the previously
    * expected upon props.
    *
-   * If there's no matching mocked return calls the component will render `null`.
+   * @see withProps
+   *
+   * If there's no matching mocked return calls the component will render an
+   * empty div.
    */
   renders: (jsx: ReactNode | ((props: Props) => ReactNode)) => ReactStub<Props>;
 }
