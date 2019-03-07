@@ -35,6 +35,15 @@ describe('createStub', () => {
     expect($foo.text()).to.contain('I am Bar');
   });
 
+  it('should stub render calls based on props', () => {
+    const Bar = createReactStub<BarProps>();
+    Bar.withProps({ bar: 42 }).renders(props => <span>{props.bar}</span>);
+
+    const $foo = $render(<Foo Bar={Bar} />);
+
+    expect($foo.text()).to.contain('42');
+  });
+
   it('should stub multiple render calls', function() {
     const Bar = createReactStub<BarProps>();
     Bar.withProps({ bar: 1 }).renders(<span>call 1</span>);

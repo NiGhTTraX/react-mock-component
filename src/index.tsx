@@ -11,7 +11,7 @@ export interface ReactMockExpectation<Props> {
    *
    * If there's no matching mocked return calls the component will render `null`.
    */
-  renders: (jsx: JSX) => ReactStub<Props>;
+  renders: (jsx: JSX | ((props: Props) => JSX)) => ReactStub<Props>;
 }
 
 export interface ReactMock<Props> {
@@ -70,8 +70,13 @@ export function createReactStub<Props>(): ReactStub<Props> {
     public static withProps(expectedProps: Partial<Props>): ReactMockExpectation<Props> {
       const expectation = renderStub.withArgs(match(expectedProps));
 
-      const renders = (jsx: JSX) => {
-        expectation.returns(jsx);
+      const renders = (jsx: JSX | ((props: Props) => JSX)) => {
+        if (typeof jsx === 'function') {
+          expectation.callsFake((props: Props) => jsx(props));
+        } else {
+          expectation.returns(jsx);
+        }
+
         return Stub;
       };
 
