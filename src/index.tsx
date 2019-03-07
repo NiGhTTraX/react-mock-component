@@ -63,7 +63,7 @@ export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
 /**
  * Create a mock component of the given type.
  */
-export function createReactMock<Props>(): ReactStub<Props> {
+export default function createReactMock<Props>(): ReactStub<Props> {
   const renderStub = stub();
 
   return class Stub extends React.Component<Props> {

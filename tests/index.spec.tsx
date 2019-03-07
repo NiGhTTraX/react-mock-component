@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, { ComponentType } from 'react';
 import { expect } from 'chai';
-import { createReactMock } from '../src';
+import createReactMock from '../src';
 import { $render } from './render-helper';
-import {ComponentType} from 'react';
 
 describe('createStub', () => {
   interface BarProps {
