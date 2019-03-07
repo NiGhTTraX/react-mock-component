@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.com/NiGhTTraX/react-mock-component.svg?branch=master)](https://travis-ci.com/NiGhTTraX/react-mock-component)
 [![codecov](https://codecov.io/gh/NiGhTTraX/react-mock-component/branch/master/graph/badge.svg)](https://codecov.io/gh/NiGhTTraX/react-mock-component)
 
+Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) as well.
+
 ---
 
 ## Usage
