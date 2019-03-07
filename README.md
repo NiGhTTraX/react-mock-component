@@ -8,6 +8,10 @@
 ## Usage
 
 ```typescript jsx
+import createReactStub from 'react-mock-component';
+import React from 'react';
+import { expect } from 'chai';
+
 interface BarProps {
   bar: number;
 }
