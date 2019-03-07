@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { stub, match, SinonStub } from 'sinon';
+import {ReactNode} from 'react';
 
-// TODO: Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
-export type JSX = React.ReactElement<any> | null;
+export type JSX = ReactNode;
 
 export interface ReactMockExpectation<Props> {
   /**
@@ -108,7 +108,9 @@ export function createReactStub<Props>(): ReactStub<Props> {
     render() {
       // In case there were no expectations set on the stub (spy behavior) we
       // return something that won't make React throw its hands in the air.
-      return renderStub(this.props) || null;
+      return <div>
+        {renderStub(this.props) || null}
+      </div>;
     }
   };
 }

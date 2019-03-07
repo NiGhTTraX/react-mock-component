@@ -28,7 +28,7 @@ describe('createStub', () => {
 
   it('should stub render calls', function () {
     const Bar = createReactStub<BarProps>();
-    Bar.withProps({ bar: 42 }).renders(<span>I am Bar</span>);
+    Bar.withProps({ bar: 42 }).renders('I am Bar');
 
     const $foo = $render(<Foo Bar={Bar} />);
 
@@ -37,7 +37,7 @@ describe('createStub', () => {
 
   it('should stub render calls based on props', () => {
     const Bar = createReactStub<BarProps>();
-    Bar.withProps({ bar: 42 }).renders(props => <span>{props.bar}</span>);
+    Bar.withProps({ bar: 42 }).renders(props => props.bar);
 
     const $foo = $render(<Foo Bar={Bar} />);
 
@@ -46,8 +46,8 @@ describe('createStub', () => {
 
   it('should stub multiple render calls', function() {
     const Bar = createReactStub<BarProps>();
-    Bar.withProps({ bar: 1 }).renders(<span>call 1</span>);
-    Bar.withProps({ bar: 2 }).renders(<span>call 2</span>);
+    Bar.withProps({ bar: 1 }).renders('call 1');
+    Bar.withProps({ bar: 2 }).renders('call 2');
 
     const $foo = $render(<Foo Bar={Bar} testbar={1} />);
     expect($foo.text()).to.contain('call 1');
@@ -108,8 +108,8 @@ describe('createStub', () => {
     const Stub = createReactStub<BarProps>();
 
     let ChainedStub: ComponentType<BarProps> = Stub
-      .withProps({ bar: 1 }).renders(<span>1</span>)
-      .withProps({ bar: 2 }).renders(<span>2</span>);
+      .withProps({ bar: 1 }).renders('1')
+      .withProps({ bar: 2 }).renders('2');
 
     let $chainedStub = $render(<ChainedStub bar={1}/>);
     expect($chainedStub.text()).to.equal('1');
@@ -151,7 +151,7 @@ describe('createStub', () => {
 
     it('should stub render calls', function() {
       const M = createReactStub<MultipleProps>();
-      M.withProps({ foo1: 1 }).renders(<span>foobar</span>);
+      M.withProps({ foo1: 1 }).renders('foobar');
 
       const $x = $render(<X MultipleProps={M} />);
 
