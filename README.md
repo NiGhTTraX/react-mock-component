@@ -8,7 +8,7 @@
 ## Usage
 
 ```typescript jsx
-import createReactStub from 'react-mock-component';
+import createReactMock from 'react-mock-component';
 import React from 'react';
 import { expect } from 'chai';
 
@@ -24,7 +24,7 @@ function Foo({ Bar }) {
   return <Bar bar={42} />;
 }
 
-const Bar = createReactStub<BarProps>();
+const Bar = createReactMock<BarProps>();
 Bar.withProps({ bar: 42 }).renders('fake content');
 
 const $foo = $render(<Foo Bar={Bar} />);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { expect } from 'chai';
-import { createReactStub } from '../src';
+import { createReactMock } from '../src';
 import { $render } from './render-helper';
 import {ComponentType} from 'react';
 
@@ -27,7 +27,7 @@ describe('createStub', () => {
   }
 
   it('should stub render calls', function () {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 42 }).renders('I am Bar');
 
     const $foo = $render(<Foo Bar={Bar} />);
@@ -36,7 +36,7 @@ describe('createStub', () => {
   });
 
   it('should stub render calls based on props', () => {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 42 }).renders(props => props.bar);
 
     const $foo = $render(<Foo Bar={Bar} />);
@@ -45,7 +45,7 @@ describe('createStub', () => {
   });
 
   it('should stub multiple render calls', function() {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 1 }).renders('call 1');
     Bar.withProps({ bar: 2 }).renders('call 2');
 
@@ -57,7 +57,7 @@ describe('createStub', () => {
   });
 
   it('should spy on render calls', function () {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} />);
 
@@ -66,7 +66,7 @@ describe('createStub', () => {
   });
 
   it('should expose the last received props', function() {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} />);
 
@@ -74,7 +74,7 @@ describe('createStub', () => {
   });
 
   it('should not return last props if never rendered', function() {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
 
     expect(() => Bar.lastProps).to.throw(
       'Component never rendered!'
@@ -82,7 +82,7 @@ describe('createStub', () => {
   });
 
   it('should expose whether it was rendered', function() {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
 
     expect(Bar.rendered).to.be.false;
     $render(<Foo Bar={Bar} />);
@@ -90,7 +90,7 @@ describe('createStub', () => {
   });
 
   it('should expose all the received props', function () {
-    const Bar = createReactStub<BarProps>();
+    const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} testbar={1} />);
     $render(<Foo Bar={Bar} testbar={2} />);
@@ -99,13 +99,13 @@ describe('createStub', () => {
   });
 
   it('should expose the sinon stub', function() {
-    const Stub = createReactStub();
+    const Stub = createReactMock();
 
     expect(Stub.sinonStub).to.have.property('args');
   });
 
   it('should return the original stub after an expectation', function() {
-    const Stub = createReactStub<BarProps>();
+    const Stub = createReactMock<BarProps>();
 
     let ChainedStub: ComponentType<BarProps> = Stub
       .withProps({ bar: 1 }).renders('1')
@@ -124,7 +124,7 @@ describe('createStub', () => {
       foo: number;
     }
 
-    const Stub = createReactStub<WithChildren>();
+    const Stub = createReactMock<WithChildren>();
 
     Stub
       .withProps({ foo: 1, children: <Stub foo={2}><span>children</span></Stub> })
@@ -150,7 +150,7 @@ describe('createStub', () => {
       <MultipleProps foo1={1} foo2={2} />;
 
     it('should stub render calls', function() {
-      const M = createReactStub<MultipleProps>();
+      const M = createReactMock<MultipleProps>();
       M.withProps({ foo1: 1 }).renders('foobar');
 
       const $x = $render(<X MultipleProps={M} />);
@@ -159,7 +159,7 @@ describe('createStub', () => {
     });
 
     it('should spy on render calls', function() {
-      const M = createReactStub<MultipleProps>();
+      const M = createReactMock<MultipleProps>();
 
       $render(<X MultipleProps={M} />);
 
