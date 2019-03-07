@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { stub, match, SinonStub } from 'sinon';
 
-// Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
+// TODO: Replace this with ReactNode after https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 is done.
 export type JSX = React.ReactElement<any> | null;
 
 export interface ReactMockExpectation<Props> {
@@ -86,7 +86,7 @@ export function createReactStub<Props>(): ReactStub<Props> {
       if (!renderStub.called) {
         throw new Error('Component never rendered!');
       }
-      
+
       return renderStub.lastCall.args[0];
     }
 
