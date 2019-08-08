@@ -53,7 +53,7 @@
     "@babel/preset-typescript": "~7.3.0",
     "@babel/register": "~7.4.0",
     "@nighttrax/eslint-config-tsx": "~2.0.0",
-    "@types/chai": "~4.1.7",
+    "@types/chai": "~4.2.0",
     "@types/jquery": "~3.3.29",
     "@types/jsdom": "~12.2.1",
     "@types/mocha": "~5.2.5",
