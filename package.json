@@ -38,7 +38,7 @@
   "author": "Andrei Picus",
   "license": "MIT",
   "dependencies": {
-    "@types/react": "~16.8.0",
+    "@types/react": "~16.9.0",
     "@types/sinon": "~7.0.2",
     "sinon": "~7.3.0"
   },
