@@ -38,9 +38,9 @@
   "author": "Andrei Picus",
   "license": "MIT",
   "dependencies": {
-    "@types/react": "~16.8.0",
+    "@types/react": "~16.9.2",
     "@types/sinon": "~7.0.2",
-    "sinon": "~7.3.0"
+    "sinon": "~7.4.2"
   },
   "peerDependencies": {
     "react": "^16"
@@ -48,18 +48,18 @@
   "devDependencies": {
     "@nighttrax/eslint-config-tsx": "~2.0.0",
     "@tdd-buffet/react": "~0.3.2",
-    "@types/node": "~10.12.18",
-    "@types/react-dom": "~16.8.0",
+    "@types/node": "~12.7.5",
+    "@types/react-dom": "~16.9.0",
     "@typescript-eslint/eslint-plugin": "~1.11.0",
     "codecov": "~3.5.0",
     "eslint": "~5.16.0",
     "eslint-plugin-react": "~7.14.0",
     "husky": "~3.0.0",
-    "lint-staged": "~9.0.0",
-    "react": "~16.8.0",
-    "react-dom": "~16.8.0",
+    "lint-staged": "~9.2.5",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
     "tdd-buffet": "~0.10.4",
-    "typescript": "~3.5.0"
+    "typescript": "~3.6.3"
   },
   "files": [
     "dist/src/**/*"
