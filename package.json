@@ -22,7 +22,7 @@
     "clean": "rm -rf ./dist",
     "compile": "tsc --declaration --outDir ./dist",
     "prepublishOnly": "npm run build",
-    "lint": "eslint --ext ts .",
+    "lint": "eslint --ext ts,tsx .",
     "test": "tdd-buffet test",
     "test:coverage": "tdd-buffet test --coverage",
     "report-coverage": "nyc report --reporter=json && codecov -f tests/results/coverage-final.json"
@@ -46,13 +46,13 @@
     "react": "^16"
   },
   "devDependencies": {
-    "@nighttrax/eslint-config-tsx": "~2.0.0",
+    "@nighttrax/eslint-config-tsx": "~3.0.0",
     "@tdd-buffet/react": "~0.3.2",
     "@types/node": "~12.7.5",
     "@types/react-dom": "~16.9.0",
-    "@typescript-eslint/eslint-plugin": "~1.11.0",
+    "@typescript-eslint/eslint-plugin": "~2.3.0",
     "codecov": "~3.5.0",
-    "eslint": "~5.16.0",
+    "eslint": "~6.4.0",
     "eslint-plugin-react": "~7.14.0",
     "husky": "~3.0.0",
     "lint-staged": "~9.2.5",
