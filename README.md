@@ -10,9 +10,10 @@ Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) as wel
 ## Usage
 
 ```typescript jsx
-import createReactMock from 'react-mock-component';
 import React from 'react';
-import { expect } from 'chai';
+import createReactMock from 'react-mock-component';
+import { $render } from '@tdd-buffet/react';
+import { expect } from 'tdd-buffet/expect/chai';
 
 interface BarProps {
   bar: number;
@@ -27,11 +28,11 @@ function Foo({ Bar }) {
 }
 
 const Bar = createReactMock<BarProps>();
-Bar.withProps({ bar: 42 }).renders('fake content');
+Bar.withProps({ bar: 42 }).renders(<span>fake content</span>);
 
 const $foo = $render(<Foo Bar={Bar} />);
 
-Bar.renderedWith({ bar: 42 }); // true
+expect(Bar.renderedWith({ bar: 42 })).to.be.true;
 expect($foo.text()).to.contain('fake content');
 ```
 
