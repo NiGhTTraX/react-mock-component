@@ -106,14 +106,14 @@ describe('createStub', () => {
   it('should return the original stub after an expectation', function() {
     const Stub = createReactMock<BarProps>();
 
-    let ChainedStub: ComponentType<BarProps> = Stub
+    const ChainedStub: ComponentType<BarProps> = Stub
       .withProps({ bar: 1 }).renders('1')
       .withProps({ bar: 2 }).renders('2');
 
-    let $chainedStub = $render(<ChainedStub bar={1}/>);
+    let $chainedStub = $render(<ChainedStub bar={1} />);
     expect($chainedStub.text()).to.equal('1');
 
-    $chainedStub = $render(<ChainedStub bar={2}/>);
+    $chainedStub = $render(<ChainedStub bar={2} />);
     expect($chainedStub.text()).to.equal('2');
   });
 
@@ -129,7 +129,7 @@ describe('createStub', () => {
       .withProps({ foo: 1, children: <Stub foo={2}><span>children</span></Stub> })
       .renders(<span>it really worked</span>);
 
-    let $chainedStub = $render(<Stub foo={1}>
+    const $chainedStub = $render(<Stub foo={1}>
       <Stub foo={2}>
         <span>children</span>
       </Stub>
@@ -145,8 +145,8 @@ describe('createStub', () => {
       foo2: number;
     }
 
-    const X = ({ MultipleProps }: { MultipleProps: React.ComponentType<MultipleProps> }) =>
-      <MultipleProps foo1={1} foo2={2} />;
+    type Props = { MultipleProps: React.ComponentType<MultipleProps> };
+    const X = ({ MultipleProps }: Props) => <MultipleProps foo1={1} foo2={2} />;
 
     it('should stub render calls', function() {
       const M = createReactMock<MultipleProps>();
