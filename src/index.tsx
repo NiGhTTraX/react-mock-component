@@ -55,6 +55,11 @@ export interface ReactMock<Props> {
      * The raw Sinon stub used under the hood.
      */
   sinonStub: SinonStub;
+
+  /**
+   * Clear all expectations and reset render history.
+   */
+  reset: () => void;
 }
 
 // eslint-disable-next-line space-infix-ops
@@ -104,6 +109,10 @@ export default function createReactMock<Props>(): ReactStub<Props> {
     }
 
     public static sinonStub = renderStub;
+
+    public static reset() {
+      renderStub.reset();
+    }
 
     render() {
       // In case there were no expectations set on the stub (spy behavior) we

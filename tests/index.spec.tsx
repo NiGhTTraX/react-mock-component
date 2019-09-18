@@ -97,10 +97,14 @@ describe('createStub', () => {
     expect(Bar.props).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
   });
 
-  it('should expose the sinon stub', function() {
+  it('should reset the stub', function() {
     const Stub = createReactMock();
+    Stub.withProps({}).renders(<span>foo</span>);
 
-    expect(Stub.sinonStub).to.have.property('args');
+    $render(<Stub />);
+    Stub.reset();
+
+    expect(Stub.rendered).to.be.false;
   });
 
   it('should return the original stub after an expectation', function() {
