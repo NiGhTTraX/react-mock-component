@@ -48,8 +48,11 @@ export interface ReactMock<Props> {
 
   /**
    * Get all the props ever received by the mock.
+   *
+   * Each element in the array corresponds to a render call. The order
+   * matches the order in which the component was rendered.
    */
-  props: Props[];
+  renderCalls: Props[];
 
   /**
    * Clear all expectations and reset render history.
@@ -99,7 +102,7 @@ export default function createReactMock<Props>(): ReactStub<Props> {
       return renderStub.called;
     }
 
-    public static get props() {
+    public static get renderCalls() {
       return renderStub.args.map(args => args[0]);
     }
 

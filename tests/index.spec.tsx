@@ -94,7 +94,7 @@ describe('createStub', () => {
     $render(<Foo Bar={Bar} testbar={1} />);
     $render(<Foo Bar={Bar} testbar={2} />);
 
-    expect(Bar.props).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
+    expect(Bar.renderCalls).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
   });
 
   it('should reset the stub', function() {
