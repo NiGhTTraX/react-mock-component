@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { stub, match, SinonStub } from 'sinon';
+import { match, stub } from 'sinon';
 
 export interface ReactMockExpectation<Props> {
   /**
@@ -50,11 +50,6 @@ export interface ReactMock<Props> {
    * Get all the props ever received by the mock.
    */
   props: Props[];
-
-    /**
-     * The raw Sinon stub used under the hood.
-     */
-  sinonStub: SinonStub;
 
   /**
    * Clear all expectations and reset render history.
@@ -107,8 +102,6 @@ export default function createReactMock<Props>(): ReactStub<Props> {
     public static get props() {
       return renderStub.args.map(args => args[0]);
     }
-
-    public static sinonStub = renderStub;
 
     public static reset() {
       renderStub.reset();
