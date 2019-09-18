@@ -1,7 +1,8 @@
 import React, { ComponentType } from 'react';
-import { expect } from 'chai';
+import { describe, it } from 'tdd-buffet/suite/node';
+import { $render } from '@tdd-buffet/react';
+import { expect } from 'tdd-buffet/expect/chai';
 import createReactMock from '../src';
-import { $render } from './render-helper';
 
 describe('createStub', () => {
   interface BarProps {
@@ -48,10 +49,10 @@ describe('createStub', () => {
     Bar.withProps({ bar: 1 }).renders('call 1');
     Bar.withProps({ bar: 2 }).renders('call 2');
 
-    const $foo = $render(<Foo Bar={Bar} testbar={1} />);
+    let $foo = $render(<Foo Bar={Bar} testbar={1} />);
     expect($foo.text()).to.contain('call 1');
 
-    $render(<Foo Bar={Bar} testbar={2} />);
+    $foo = $render(<Foo Bar={Bar} testbar={2} />);
     expect($foo.text()).to.contain('call 2');
   });
 
