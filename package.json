@@ -40,7 +40,7 @@
   "dependencies": {
     "@types/react": "~16.9.2",
     "@types/sinon": "~7.0.2",
-    "sinon": "~7.4.2"
+    "sinon": "~7.5.0"
   },
   "peerDependencies": {
     "react": "^16"
