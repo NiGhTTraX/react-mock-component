@@ -48,7 +48,7 @@
   "devDependencies": {
     "@nighttrax/eslint-config-tsx": "~3.0.0",
     "@tdd-buffet/react": "~0.5.0",
-    "@types/node": "~12.7.5",
+    "@types/node": "~12.11.0",
     "@types/react-dom": "~16.9.0",
     "@typescript-eslint/eslint-plugin": "~2.4.0",
     "codecov": "~3.6.0",
