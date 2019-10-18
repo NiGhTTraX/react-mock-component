@@ -1,4 +1,5 @@
-import React, { ComponentType } from 'react';
+/* eslint-disable react/prop-types */
+import React, { ComponentType, useState } from 'react';
 import { describe, it } from 'tdd-buffet/suite/node';
 import { $render } from '@tdd-buffet/react';
 import { expect } from 'tdd-buffet/expect/chai';
@@ -168,6 +169,52 @@ describe('createStub', () => {
       $render(<X MultipleProps={M} />);
 
       expect(M.renderedWith({ foo1: 1 })).to.be.true;
+    });
+  });
+
+  describe('hooks', () => {
+    const originalError = console.error;
+
+    beforeEach(() => {
+      console.error = (...args: any[]) => {
+        if (/Warning.*not wrapped in act/.test(args[0])) {
+          throw new Error(args[0]);
+        }
+
+        originalError.call(console, ...args);
+      };
+    });
+
+    afterEach(() => {
+      console.error = originalError;
+    });
+
+    interface ChildProps {
+      onSubmit: (foo: number) => void;
+      someState: number;
+    }
+    interface HookyProps {
+      Child: React.ComponentType<ChildProps>
+    }
+
+    const HookyComponents: React.FC<HookyProps> = ({ Child }) => {
+      const [someState, setSomeState] = useState(42);
+
+      return <Child
+        someState={someState}
+        onSubmit={foo => setSomeState(foo)}
+      />;
+    };
+
+    it('should wrap last prop calls in act', () => {
+      const Child = createReactMock<ChildProps>();
+      $render(<HookyComponents Child={Child} />);
+
+      Child.renderCalls[0].onSubmit(-1);
+      expect(Child.renderedWith({ someState: -1 })).to.be.true;
+
+      Child.lastProps.onSubmit(23);
+      expect(Child.renderedWith({ someState: 23 })).to.be.true;
     });
   });
 });
