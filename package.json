@@ -59,7 +59,7 @@
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "tdd-buffet": "~0.14.0",
-    "typescript": "~3.6.3"
+    "typescript": "~3.7.0"
   },
   "files": [
     "dist/src/**/*"
