@@ -50,7 +50,7 @@
     "@tdd-buffet/react": "~0.8.0",
     "@types/node": "~12.12.0",
     "@types/react-dom": "~16.9.0",
-    "@typescript-eslint/eslint-plugin": "~2.15.0",
+    "@typescript-eslint/eslint-plugin": "~2.16.0",
     "codecov": "~3.6.0",
     "eslint": "~6.8.0",
     "eslint-plugin-react": "~7.17.0",
