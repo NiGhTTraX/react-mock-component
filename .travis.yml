@@ -1,14 +1,13 @@
 language: node_js
 node_js:
-- 8
+  - 10
 sudo: required
 services:
-- docker
+  - docker
 
 script:
-- npm run lint
-- npm run test:coverage
-- npm run build
+  - yarn run lint
+  - yarn run test
 
-after_success:
-- npm run report-coverage
+after_script:
+  - bash <(curl -s https://codecov.io/bash) -f "tests/results/coverage-final.json"
