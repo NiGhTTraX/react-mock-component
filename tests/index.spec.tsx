@@ -17,6 +17,7 @@ describe('createStub', () => {
   }
 
   class Foo extends React.Component<FooProps> {
+    // eslint-disable-next-line react/static-property-placement
     public static defaultProps: Partial<FooProps> = {
       testbar: 42
     };
@@ -27,7 +28,7 @@ describe('createStub', () => {
     }
   }
 
-  it('should stub render calls', function () {
+  it('should stub render calls', function() {
     const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 42 }).renders('I am Bar');
 
@@ -57,7 +58,7 @@ describe('createStub', () => {
     expect($foo.text()).to.contain('call 2');
   });
 
-  it('should spy on render calls', function () {
+  it('should spy on render calls', function() {
     const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} />);
@@ -77,9 +78,7 @@ describe('createStub', () => {
   it('should not return last props if never rendered', function() {
     const Bar = createReactMock<BarProps>();
 
-    expect(() => Bar.lastProps).to.throw(
-      'Component never rendered!'
-    );
+    expect(() => Bar.lastProps).to.throw('Component never rendered!');
   });
 
   it('should expose whether it was rendered', function() {
@@ -90,7 +89,7 @@ describe('createStub', () => {
     expect(Bar.rendered).to.be.true;
   });
 
-  it('should expose all the received props', function () {
+  it('should expose all the received props', function() {
     const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} testbar={1} />);
@@ -112,9 +111,10 @@ describe('createStub', () => {
   it('should return the original stub after an expectation', function() {
     const Stub = createReactMock<BarProps>();
 
-    const ChainedStub: ComponentType<BarProps> = Stub
-      .withProps({ bar: 1 }).renders('1')
-      .withProps({ bar: 2 }).renders('2');
+    const ChainedStub: ComponentType<BarProps> = Stub.withProps({ bar: 1 })
+      .renders('1')
+      .withProps({ bar: 2 })
+      .renders('2');
 
     let $chainedStub = $render(<ChainedStub bar={1} />);
     expect($chainedStub.text()).to.equal('1');
@@ -131,18 +131,33 @@ describe('createStub', () => {
 
     const Stub = createReactMock<WithChildren>();
 
-    Stub
-      .withProps({ foo: 1, children: <Stub foo={2}><span>children</span></Stub> })
-      .renders(<span>it really worked</span>);
+    Stub.withProps({
+      foo: 1,
+      children: (
+        <Stub foo={2}>
+          <span>children</span>
+        </Stub>
+      )
+    }).renders(<span>it really worked</span>);
 
-    const $chainedStub = $render(<Stub foo={1}>
-      <Stub foo={2}>
-        <span>children</span>
+    const $chainedStub = $render(
+      <Stub foo={1}>
+        <Stub foo={2}>
+          <span>children</span>
+        </Stub>
       </Stub>
-    </Stub>);
+    );
 
     expect($chainedStub.text()).to.contain('it really worked');
-    expect(Stub.renderedWith({ children: <Stub foo={2}><span>children</span></Stub> })).to.be.true;
+    expect(
+      Stub.renderedWith({
+        children: (
+          <Stub foo={2}>
+            <span>children</span>
+          </Stub>
+        )
+      })
+    ).to.be.true;
   });
 
   describe('partial props', function() {
@@ -194,16 +209,15 @@ describe('createStub', () => {
       someState: number;
     }
     interface HookyProps {
-      Child: React.ComponentType<ChildProps>
+      Child: React.ComponentType<ChildProps>;
     }
 
     const HookyComponents: React.FC<HookyProps> = ({ Child }) => {
       const [someState, setSomeState] = useState(42);
 
-      return <Child
-        someState={someState}
-        onSubmit={foo => setSomeState(foo)}
-      />;
+      return (
+        <Child someState={someState} onSubmit={foo => setSomeState(foo)} />
+      );
     };
 
     it('should wrap last prop calls in act', () => {

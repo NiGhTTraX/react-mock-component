@@ -43,19 +43,25 @@
     "sinon": "~7.5.0"
   },
   "peerDependencies": {
-    "react": "^16"
+    "react": "^16",
+    "react-dom": "^16"
   },
   "devDependencies": {
-    "@nighttrax/eslint-config-tsx": "~3.0.0",
+    "@nighttrax/eslint-config-tsx": "~4.1.1-alpha.0",
     "@tdd-buffet/react": "~0.5.0",
     "@types/node": "~12.11.0",
     "@types/react-dom": "~16.9.0",
     "@typescript-eslint/eslint-plugin": "~2.4.0",
     "codecov": "~3.6.0",
-    "eslint": "~6.5.0",
+    "eslint": "~6.8.0",
+    "eslint-import-resolver-typescript": "~1.1.1",
+    "eslint-plugin-import": "~2.20.0",
+    "eslint-plugin-prettier": "~3.1.2",
     "eslint-plugin-react": "~7.16.0",
+    "eslint-plugin-react-hooks": "~1.7.0",
     "husky": "~3.0.0",
     "lint-staged": "~9.4.0",
+    "prettier": "~1.19.1",
     "react": "~16.10.0",
     "react-dom": "~16.10.0",
     "tdd-buffet": "~0.14.0",

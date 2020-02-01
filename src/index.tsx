@@ -91,7 +91,9 @@ export default function createReactMock<Props>(): ReactStub<Props> {
   const renderStub = stub();
 
   return class Stub extends React.Component<Props> {
-    public static withProps(expectedProps: Partial<Props>): ReactMockExpectation<Props> {
+    public static withProps(
+      expectedProps: Partial<Props>
+    ): ReactMockExpectation<Props> {
       const expectation = renderStub.withArgs(match(expectedProps));
 
       const renders = (jsx: ReactNode | ((props: Props) => ReactNode)) => {
@@ -134,15 +136,17 @@ export default function createReactMock<Props>(): ReactStub<Props> {
     }
 
     private static wrapPropCallbacks(props: Props) {
-      return Object.keys(props)
-        .reduce((acc, prop) => ({
+      return Object.keys(props).reduce(
+        (acc, prop) => ({
           ...acc,
 
           [prop]: this.wrapCallback(
             // @ts-ignore because Props is generic so can't be indexed
             props[prop]
           )
-        }), {}) as Props;
+        }),
+        {}
+      ) as Props;
     }
 
     private static wrapCallback(prop: any) {
@@ -156,9 +160,7 @@ export default function createReactMock<Props>(): ReactStub<Props> {
     render() {
       // In case there were no expectations set on the stub (spy behavior) we
       // return something that won't make React throw its hands in the air.
-      return <div>
-        {renderStub(this.props) || null}
-      </div>;
+      return <div>{renderStub(this.props) || null}</div>;
     }
   };
 }
