@@ -15,17 +15,22 @@
     "type": "git",
     "url": "https://github.com/NiGhTTraX/react-mock-component.git"
   },
-  "main": "dist/src/index",
-  "types": "dist/src/index",
+  "author": "Andrei Picus",
+  "license": "MIT",
+  "homepage": "https://github.com/NiGhTTraX/react-mock-component",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "yarn run clean && yarn run compile",
     "clean": "rm -rf ./dist",
-    "compile": "tsc --declaration --outDir ./dist",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint --ext ts,tsx .",
-    "test": "tdd-buffet test",
-    "test:coverage": "tdd-buffet test --coverage",
-    "report-coverage": "nyc report --reporter=json && codecov -f tests/results/coverage-final.json"
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "yarn run build",
+    "lint": "eslint --ext ts,tsx,js .",
+    "test": "tdd-buffet test --coverage",
+    "report-coverage": "bash <(curl -s https://codecov.io/bash) -f \"tests/results/coverage-final.json\""
   },
   "husky": {
     "hooks": {
@@ -35,8 +40,6 @@
   "lint-staged": {
     "*.ts": "eslint"
   },
-  "author": "Andrei Picus",
-  "license": "MIT",
   "dependencies": {
     "@types/react": "~16.9.2",
     "@types/sinon": "~7.5.0",
@@ -66,8 +69,5 @@
     "react-dom": "~16.10.0",
     "tdd-buffet": "~0.14.0",
     "typescript": "~3.6.3"
-  },
-  "files": [
-    "dist/src/**/*"
-  ]
+  }
 }
