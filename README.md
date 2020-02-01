@@ -7,6 +7,21 @@ Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) and th
 
 ---
 
+## Installation
+
+With npm
+
+```sh
+npm i -D jest-react-mock
+```
+
+or with yarn
+
+```sh
+yarn add -D jest-react-mock
+```
+
+
 ## Usage
 
 ```typescript jsx
