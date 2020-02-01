@@ -26,7 +26,10 @@ console.log(document.body.innerHTML); // <span>fake content</span>
 You can of course use this library without TypeScript, you just won't
 get any errors if you for instance check for the wrong prop.
 
-In an IDE with good support for TypeScript e.g. WebStorm you can get automatic renaming of props across code and tests:
+
+## Type safety
+
+All the methods are fully typed to prevent mistakes where the tests don't match the code they're testing. Moreover, an IDE with good support for TypeScript e.g. WebStorm can provide autocomplete and automatic refactoring of props across code and tests.
 
 ![demo](./demo.gif)
 
