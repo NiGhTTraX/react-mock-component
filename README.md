@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/NiGhTTraX/react-mock-component.svg?branch=master)](https://travis-ci.com/NiGhTTraX/react-mock-component)
 [![codecov](https://codecov.io/gh/NiGhTTraX/react-mock-component/branch/master/graph/badge.svg)](https://codecov.io/gh/NiGhTTraX/react-mock-component) ![npm type definitions](https://img.shields.io/npm/types/react-mock-component.svg)
 
-Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) as well.
+Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) and the [jest helper](https://github.com/NiGhTTraX/jest-react-mock) as well.
 
 ---
 
@@ -12,28 +12,15 @@ Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) as wel
 ```typescript jsx
 import React from 'react';
 import createReactMock from 'react-mock-component';
-import { $render } from '@tdd-buffet/react';
-import { expect } from 'tdd-buffet/expect/chai';
+import { render } from 'react-dom';
 
-interface BarProps {
-  bar: number;
-}
+const Foo = createReactMock<{ bar: number }>();
+Foo.withProps({ bar: 42 }).renders(<span>fake content</span>);
 
-interface FooProps {
-  Bar: React.ComponentType<BarProps>;
-}
+render(<Foo bar={42} />);
 
-function Foo({ Bar }) {
-  return <Bar bar={42} />;
-}
-
-const Bar = createReactMock<BarProps>();
-Bar.withProps({ bar: 42 }).renders(<span>fake content</span>);
-
-const $foo = $render(<Foo Bar={Bar} />);
-
-expect(Bar.renderedWith({ bar: 42 })).to.be.true;
-expect($foo.text()).to.contain('fake content');
+console.log(Foo.renderedWith({ bar: 42 })); // true
+console.log(document.body.innerHTML); // <span>fake content</span>
 ```
 
 You can of course use this library without TypeScript, you just won't
@@ -46,9 +33,9 @@ In an IDE with good support for TypeScript e.g. WebStorm you can get automatic r
 
 ## API
 
-### `createReactMock<Props>`
+### `createReactMock<Props>()`
 
-Returns a real component that records the props it receives and that allows you to set [expectations](#withpropsprops-partialprops) before hand or [check them afterwards](#renderedwithprops-partialprops).
+Returns a real component that records the props it receives and allows you to set [expectations](#withpropsprops-partialprops) before hand or [check them afterwards](#renderedwithprops-partialprops).
 
 ```typescript jsx
 import createReactMock from 'react-mock-component';
@@ -94,7 +81,7 @@ render(<Mock foo="bar" />); // will render "foobar"
 render(<Mock foo="bar" />); // will render null
 ```
 
-### `renderedWith(props: Partial<Props>)`
+### `renderedWith(props: Partial<Props>): boolean`
 
 Check if the component was rendered with the given props.
 
