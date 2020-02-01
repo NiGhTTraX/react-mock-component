@@ -5,7 +5,7 @@ import { $render } from '@tdd-buffet/react';
 import { expect } from 'tdd-buffet/expect/chai';
 import createReactMock from '../src';
 
-describe('createStub', () => {
+describe('createReactMock', () => {
   interface BarProps {
     bar: number;
   }
@@ -164,16 +164,18 @@ describe('createStub', () => {
     interface MultipleProps {
       foo1: number;
       foo2: number;
+      nested: {
+        foo: {
+          bar: number;
+        };
+      };
     }
-
-    type Props = { MultipleProps: React.ComponentType<MultipleProps> };
-    const X = ({ MultipleProps }: Props) => <MultipleProps foo1={1} foo2={2} />;
 
     it('should stub render calls', function() {
       const M = createReactMock<MultipleProps>();
-      M.withProps({ foo1: 1 }).renders('foobar');
+      M.withProps({ nested: { foo: { bar: 3 } } }).renders('foobar');
 
-      const $x = $render(<X MultipleProps={M} />);
+      const $x = $render(<M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />);
 
       expect($x.text()).to.contain('foobar');
     });
@@ -181,9 +183,9 @@ describe('createStub', () => {
     it('should spy on render calls', function() {
       const M = createReactMock<MultipleProps>();
 
-      $render(<X MultipleProps={M} />);
+      $render(<M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />);
 
-      expect(M.renderedWith({ foo1: 1 })).to.be.true;
+      expect(M.renderedWith({ nested: { foo: { bar: 3 } } })).to.be.true;
     });
   });
 

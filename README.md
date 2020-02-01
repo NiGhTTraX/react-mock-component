@@ -47,7 +47,7 @@ render(<Mock foo="bar" />);
 render(<Mock foo={23} />); // type error
 ```
 
-### `withProps(props: Partial<Props>)`
+### `withProps(props: DeepPartial<Props>)`
 
 Sets an expectation that the component will receive the given props. Chain it with [`renders`](#rendersjsx-jsx) to finish the expectation.
 
@@ -81,7 +81,7 @@ render(<Mock foo="bar" />); // will render "foobar"
 render(<Mock foo="bar" />); // will render null
 ```
 
-### `renderedWith(props: Partial<Props>): boolean`
+### `renderedWith(props: DeepPartial<Props>): boolean`
 
 Check if the component was rendered with the given props.
 

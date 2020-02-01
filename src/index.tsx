@@ -2,6 +2,10 @@ import React, { ReactNode } from 'react';
 import { match, stub } from 'sinon';
 import { act } from 'react-dom/test-utils';
 
+type DeepPartial<T> = T extends object
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : T;
+
 export interface ReactMockExpectation<Props> {
   /**
    * Set the return value for when the component receives the previously
@@ -27,7 +31,7 @@ export interface ReactMock<Props> {
    *   props so as to not expose private handlers e.g. when a parent
    *   component sends a private onClick handler to a Button component.
    */
-  withProps: (expected: Partial<Props>) => ReactMockExpectation<Props>;
+  withProps: (expected: DeepPartial<Props>) => ReactMockExpectation<Props>;
 
   /**
    * See whether the component was ever rendered with the given props.
@@ -35,7 +39,7 @@ export interface ReactMock<Props> {
    * @param props A subset of the props.
    * @see withProps
    */
-  renderedWith: (props: Partial<Props>) => boolean;
+  renderedWith: (props: DeepPartial<Props>) => boolean;
 
   /**
    * Was this component rendered at least once?
@@ -92,9 +96,9 @@ export default function createReactMock<Props>(): ReactStub<Props> {
 
   return class Stub extends React.Component<Props> {
     public static withProps(
-      expectedProps: Partial<Props>
+      expectedProps: DeepPartial<Props>
     ): ReactMockExpectation<Props> {
-      const expectation = renderStub.withArgs(match(expectedProps));
+      const expectation = renderStub.withArgs(match(expectedProps as object));
 
       const renders = (jsx: ReactNode | ((props: Props) => ReactNode)) => {
         if (typeof jsx === 'function') {
@@ -109,7 +113,7 @@ export default function createReactMock<Props>(): ReactStub<Props> {
       return { renders };
     }
 
-    public static renderedWith(props: Partial<Props>): boolean {
+    public static renderedWith(props: DeepPartial<Props>): boolean {
       return renderStub.calledWithMatch(props);
     }
 
