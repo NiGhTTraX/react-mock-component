@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { ComponentType, useState } from 'react';
+import { act } from 'react-dom/test-utils';
 import { describe, it } from 'tdd-buffet/suite/node';
 import { $render } from '@tdd-buffet/react';
 import { expect } from 'tdd-buffet/expect/chai';
@@ -194,7 +195,7 @@ describe('createReactMock', () => {
 
     beforeEach(() => {
       console.error = (...args: any[]) => {
-        if (/Warning.*not wrapped in act/.test(args[0])) {
+        if (/act/.test(args[0])) {
           throw new Error(args[0]);
         }
 
@@ -231,6 +232,16 @@ describe('createReactMock', () => {
 
       Child.lastProps.onSubmit(23);
       expect(Child.renderedWith({ someState: 23 })).to.be.true;
+    });
+
+    it('should opt out of wrapping last prop calls in act', () => {
+      const Child = createReactMock<ChildProps>({ wrapInAct: false });
+
+      $render(<Child onSubmit={() => () => {}} someState={23} />);
+
+      act(() => {
+        Child.renderCalls[0].onSubmit(-1);
+      });
     });
   });
 });

@@ -90,8 +90,16 @@ export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
 
 /**
  * Create a mock component of the given type.
+ *
+ * @param wrapInAct By default all function props are wrapped in `act()`
+ *   so you don't have to when calling them from `lastProps`. If you want
+ *   to opt out of this pass `wrapInAct: false`.
  */
-export default function createReactMock<Props>(): ReactStub<Props> {
+export default function createReactMock<Props>({
+  wrapInAct = true
+}: {
+  wrapInAct?: boolean;
+} = {}): ReactStub<Props> {
   const renderStub = stub();
 
   return class Stub extends React.Component<Props> {
@@ -155,6 +163,10 @@ export default function createReactMock<Props>(): ReactStub<Props> {
 
     private static wrapCallback(prop: any) {
       if (typeof prop !== 'function') {
+        return prop;
+      }
+
+      if (!wrapInAct) {
         return prop;
       }
 
