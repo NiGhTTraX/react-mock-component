@@ -42,7 +42,7 @@
   "dependencies": {
     "@types/react": "~16.9.2",
     "@types/sinon": "~7.5.0",
-    "sinon": "~8.1.0"
+    "sinon": "~9.0.0"
   },
   "peerDependencies": {
     "react": "^16",
@@ -53,20 +53,20 @@
     "@tdd-buffet/react": "~0.8.0",
     "@types/node": "~12.12.0",
     "@types/react-dom": "~16.9.0",
-    "@typescript-eslint/eslint-plugin": "~2.20.0",
+    "@typescript-eslint/eslint-plugin": "~2.23.0",
     "codecov": "~3.6.0",
     "eslint": "~6.8.0",
     "eslint-import-resolver-typescript": "~2.0.0",
     "eslint-plugin-import": "~2.20.0",
     "eslint-plugin-prettier": "~3.1.2",
-    "eslint-plugin-react": "~7.18.0",
-    "eslint-plugin-react-hooks": "~2.4.0",
+    "eslint-plugin-react": "~7.19.0",
+    "eslint-plugin-react-hooks": "~2.5.0",
     "husky": "~4.2.0",
     "lint-staged": "~10.0.0",
     "prettier": "~1.19.1",
-    "react": "~16.12.0",
-    "react-dom": "~16.12.0",
+    "react": "~16.13.0",
+    "react-dom": "~16.13.0",
     "tdd-buffet": "~0.15.0",
-    "typescript": "~3.7.0"
+    "typescript": "~3.8.0"
   }
 }
