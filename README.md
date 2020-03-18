@@ -141,6 +141,24 @@ render(<Mock2 foo="baz" />); // will render "foobar"
 Mock2.rendered // true
 ```
 
+### `mounted: boolean`
+
+Returns if the component is currently mounted.
+
+```typescript jsx
+import createReactMock from 'react-mock-component';
+import React from 'react';
+import { render, unmount } from 'react-dom';
+
+const Mock = createReactMock();
+
+console.log(Mock.mounted); // false
+render(<Mock />); 
+console.log(Mock.mounted); // true
+unmount();
+console.log(Mock.mounted); // false
+```
+
 ### `renderCalls: Props[]`
 
 Get all the props for all the renders of the mock.
