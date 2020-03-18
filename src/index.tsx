@@ -47,6 +47,11 @@ export interface ReactMock<Props> {
   rendered: boolean;
 
   /**
+   * Is this component currently mounted?
+   */
+  mounted: boolean;
+
+  /**
    * Get the props the component received in the last render call.
    *
    * You can call callbacks from here and not have to worry about `act()`.
@@ -101,6 +106,7 @@ export default function createReactMock<Props>({
   wrapInAct?: boolean;
 } = {}): ReactStub<Props> {
   const renderStub = stub();
+  let mounted = false;
 
   return class Stub extends React.Component<Props> {
     public static withProps(
@@ -137,6 +143,10 @@ export default function createReactMock<Props>({
 
     public static get rendered() {
       return renderStub.called;
+    }
+
+    public static get mounted() {
+      return mounted;
     }
 
     public static get renderCalls() {
@@ -177,6 +187,14 @@ export default function createReactMock<Props>({
       // In case there were no expectations set on the stub (spy behavior) we
       // return something that won't make React throw its hands in the air.
       return <div>{renderStub(this.props) || null}</div>;
+    }
+
+    componentDidMount() {
+      mounted = true;
+    }
+
+    componentWillUnmount() {
+      mounted = false;
     }
   };
 }

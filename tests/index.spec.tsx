@@ -2,7 +2,7 @@
 import React, { ComponentType, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import { describe, it } from 'tdd-buffet/suite/node';
-import { $render } from '@tdd-buffet/react';
+import { $render, unmount } from '@tdd-buffet/react';
 import { expect } from 'tdd-buffet/expect/chai';
 import createReactMock from '../src';
 
@@ -88,6 +88,18 @@ describe('createReactMock', () => {
     expect(Bar.rendered).to.be.false;
     $render(<Foo Bar={Bar} />);
     expect(Bar.rendered).to.be.true;
+  });
+
+  it('should expose if it is currently rendered', () => {
+    const Mock = createReactMock();
+
+    $render(<Mock />);
+
+    expect(Mock.mounted).to.be.true;
+
+    unmount();
+
+    expect(Mock.mounted).to.be.false;
   });
 
   it('should expose all the received props', function() {
