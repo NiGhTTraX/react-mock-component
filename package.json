@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@nighttrax/eslint-config-tsx": "~4.1.1-alpha.0",
-    "@tdd-buffet/react": "~0.8.0",
+    "@tdd-buffet/react": "~0.9.0",
     "@types/node": "~12.12.0",
     "@types/react-dom": "~16.9.0",
     "@typescript-eslint/eslint-plugin": "~2.24.0",
