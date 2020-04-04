@@ -20,7 +20,7 @@ describe('createReactMock', () => {
   class Foo extends React.Component<FooProps> {
     // eslint-disable-next-line react/static-property-placement
     public static defaultProps: Partial<FooProps> = {
-      testbar: 42
+      testbar: 42,
     };
 
     render() {
@@ -29,7 +29,7 @@ describe('createReactMock', () => {
     }
   }
 
-  it('should stub render calls', function() {
+  it('should stub render calls', function () {
     const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 42 }).renders('I am Bar');
 
@@ -40,14 +40,14 @@ describe('createReactMock', () => {
 
   it('should stub render calls based on props', () => {
     const Bar = createReactMock<BarProps>();
-    Bar.withProps({ bar: 42 }).renders(props => props.bar);
+    Bar.withProps({ bar: 42 }).renders((props) => props.bar);
 
     const $foo = $render(<Foo Bar={Bar} />);
 
     expect($foo.text()).to.contain('42');
   });
 
-  it('should stub multiple render calls', function() {
+  it('should stub multiple render calls', function () {
     const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 1 }).renders('call 1');
     Bar.withProps({ bar: 2 }).renders('call 2');
@@ -59,7 +59,7 @@ describe('createReactMock', () => {
     expect($foo.text()).to.contain('call 2');
   });
 
-  it('should spy on render calls', function() {
+  it('should spy on render calls', function () {
     const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} />);
@@ -68,7 +68,7 @@ describe('createReactMock', () => {
     expect(Bar.renderedWith({ bar: 43 })).to.be.false;
   });
 
-  it('should expose the last received props', function() {
+  it('should expose the last received props', function () {
     const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} />);
@@ -76,13 +76,13 @@ describe('createReactMock', () => {
     expect(Bar.lastProps).to.deep.equal({ bar: 42 });
   });
 
-  it('should not return last props if never rendered', function() {
+  it('should not return last props if never rendered', function () {
     const Bar = createReactMock<BarProps>();
 
     expect(() => Bar.lastProps).to.throw('Component never rendered!');
   });
 
-  it('should expose whether it was rendered', function() {
+  it('should expose whether it was rendered', function () {
     const Bar = createReactMock<BarProps>();
 
     expect(Bar.rendered).to.be.false;
@@ -102,7 +102,7 @@ describe('createReactMock', () => {
     expect(Mock.mounted).to.be.false;
   });
 
-  it('should expose all the received props', function() {
+  it('should expose all the received props', function () {
     const Bar = createReactMock<BarProps>();
 
     $render(<Foo Bar={Bar} testbar={1} />);
@@ -111,7 +111,7 @@ describe('createReactMock', () => {
     expect(Bar.renderCalls).to.deep.equal([{ bar: 1 }, { bar: 2 }]);
   });
 
-  it('should reset the stub', function() {
+  it('should reset the stub', function () {
     const Stub = createReactMock();
     Stub.withProps({}).renders(<span>foo</span>);
 
@@ -121,7 +121,7 @@ describe('createReactMock', () => {
     expect(Stub.rendered).to.be.false;
   });
 
-  it('should return the original stub after an expectation', function() {
+  it('should return the original stub after an expectation', function () {
     const Stub = createReactMock<BarProps>();
 
     const ChainedStub: ComponentType<BarProps> = Stub.withProps({ bar: 1 })
@@ -150,7 +150,7 @@ describe('createReactMock', () => {
         <Stub foo={2}>
           <span>children</span>
         </Stub>
-      )
+      ),
     }).renders(<span>it really worked</span>);
 
     const $chainedStub = $render(
@@ -168,12 +168,12 @@ describe('createReactMock', () => {
           <Stub foo={2}>
             <span>children</span>
           </Stub>
-        )
+        ),
       })
     ).to.be.true;
   });
 
-  describe('partial props', function() {
+  describe('partial props', function () {
     interface MultipleProps {
       foo1: number;
       foo2: number;
@@ -184,7 +184,7 @@ describe('createReactMock', () => {
       };
     }
 
-    it('should stub render calls', function() {
+    it('should stub render calls', function () {
       const M = createReactMock<MultipleProps>();
       M.withProps({ nested: { foo: { bar: 3 } } }).renders('foobar');
 
@@ -193,7 +193,7 @@ describe('createReactMock', () => {
       expect($x.text()).to.contain('foobar');
     });
 
-    it('should spy on render calls', function() {
+    it('should spy on render calls', function () {
       const M = createReactMock<MultipleProps>();
 
       $render(<M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />);
@@ -231,7 +231,7 @@ describe('createReactMock', () => {
       const [someState, setSomeState] = useState(42);
 
       return (
-        <Child someState={someState} onSubmit={foo => setSomeState(foo)} />
+        <Child someState={someState} onSubmit={(foo) => setSomeState(foo)} />
       );
     };
 

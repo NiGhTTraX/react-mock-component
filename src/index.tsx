@@ -101,7 +101,7 @@ export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
  *   to opt out of this pass `wrapInAct: false`.
  */
 export default function createReactMock<Props>({
-  wrapInAct = true
+  wrapInAct = true,
 }: {
   wrapInAct?: boolean;
 } = {}): ReactStub<Props> {
@@ -150,7 +150,7 @@ export default function createReactMock<Props>({
     }
 
     public static get renderCalls() {
-      return renderStub.args.map(args => this.wrapPropCallbacks(args[0]));
+      return renderStub.args.map((args) => this.wrapPropCallbacks(args[0]));
     }
 
     public static reset() {
@@ -165,7 +165,7 @@ export default function createReactMock<Props>({
           [prop]: this.wrapCallback(
             // @ts-ignore because Props is generic so can't be indexed
             props[prop]
-          )
+          ),
         }),
         {}
       ) as Props;
