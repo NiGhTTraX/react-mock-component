@@ -49,7 +49,7 @@
     "react-dom": "^16"
   },
   "devDependencies": {
-    "@nighttrax/eslint-config-tsx": "~4.1.1-alpha.0",
+    "@nighttrax/eslint-config-tsx": "~5.0.0-beta.1",
     "@tdd-buffet/react": "~0.9.0",
     "@types/node": "~12.12.0",
     "@types/react-dom": "~16.9.0",
