@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { ComponentType, useState } from 'react';
 import { act } from 'react-dom/test-utils';
-import { describe, it } from 'tdd-buffet/suite/node';
-import { $render, unmount } from '@tdd-buffet/react';
+import { describe, it, beforeEach, afterEach } from 'tdd-buffet/suite/node';
+import { $render, $unmount } from '@tdd-buffet/react';
 import { expect } from 'tdd-buffet/expect/chai';
 import createReactMock from '../src';
 
@@ -97,7 +97,7 @@ describe('createReactMock', () => {
 
     expect(Mock.mounted).to.be.true;
 
-    unmount();
+    $unmount();
 
     expect(Mock.mounted).to.be.false;
   });
