@@ -59,7 +59,7 @@
     "lint-staged": "~10.2.0",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
-    "tdd-buffet": "~0.16.0",
+    "tdd-buffet": "~1.0.0",
     "typescript": "~3.9.0"
   }
 }
