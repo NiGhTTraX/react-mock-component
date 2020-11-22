@@ -12,13 +12,13 @@ Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) and th
 With npm
 
 ```sh
-npm i -D jest-react-mock
+npm i -D react-mock-component
 ```
 
 or with yarn
 
 ```sh
-yarn add -D jest-react-mock
+yarn add -D react-mock-component
 ```
 
 
