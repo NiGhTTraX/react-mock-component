@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/NiGhTTraX/react-mock-component.svg?branch=master)](https://travis-ci.com/NiGhTTraX/react-mock-component)
 [![codecov](https://codecov.io/gh/NiGhTTraX/react-mock-component/branch/master/graph/badge.svg)](https://codecov.io/gh/NiGhTTraX/react-mock-component) ![npm type definitions](https://img.shields.io/npm/types/react-mock-component.svg)
 
-Check out the [chai plugin](https://github.com/NiGhTTraX/chai-react-mock) and the [jest helper](https://github.com/NiGhTTraX/jest-react-mock) as well.
+Check out the [jest matcher](https://github.com/NiGhTTraX/jest-react-mock) as well.
 
 ---
 
