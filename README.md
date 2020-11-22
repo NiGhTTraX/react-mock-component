@@ -53,7 +53,7 @@ All the methods are fully typed to prevent mistakes where the tests don't match 
 
 ### `createReactMock<Props>()`
 
-Returns a real component that records the props it receives and allows you to set [expectations](#withpropsprops-partialprops) before hand or [check them afterwards](#renderedwithprops-partialprops).
+Returns a real component that records the props it receives and allows you to set [expectations](#withpropsprops-deeppartialprops) beforehand or [check them afterwards](#renderedwithprops-deeppartialprops-boolean).
 
 ```typescript jsx
 import createReactMock from 'react-mock-component';
