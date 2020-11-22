@@ -78,7 +78,7 @@ Mock.withProps({ foo: 23 }) // type error
 Mock.withProps({ }) // expects any props
 ```
 
-An expectation can only be consumed once. Once the component receives matching props the corresponding expectation will be unset.
+An expectation can only be met once, and after the component receives matching props the corresponding expectation will be unset.
 
 If the component receives props that don't match any expectation (either because one wasn't set or because all have been consumed) then it will render `null`.
 
