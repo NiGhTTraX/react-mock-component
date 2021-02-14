@@ -32,14 +32,6 @@
     "test": "tdd-buffet test --coverage",
     "report-coverage": "codecov"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": "eslint"
-  },
   "dependencies": {
     "sinon": "~9.2.0"
   },
@@ -59,8 +51,6 @@
     "@types/sinon": "~9.0.0",
     "codecov": "~3.8.0",
     "eslint": "~7.20.0",
-    "husky": "~5.0.0",
-    "lint-staged": "~10.5.0",
     "react": "~17.0.0",
     "react-dom": "~17.0.0",
     "tdd-buffet": "~2.1.0",
