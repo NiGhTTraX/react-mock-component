@@ -29,7 +29,8 @@
     "compile": "tsc -p tsconfig.build.json",
     "prepublishOnly": "yarn run build",
     "lint": "eslint --ext ts,tsx,js .",
-    "test": "tdd-buffet test --coverage"
+    "test": "tdd-buffet test --coverage",
+    "report-coverage": "codecov -f tests/results/coverage-final.json"
   },
   "husky": {
     "hooks": {
