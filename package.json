@@ -30,7 +30,7 @@
     "prepublishOnly": "yarn run build",
     "lint": "eslint --ext ts,tsx,js .",
     "test": "tdd-buffet test --coverage",
-    "report-coverage": "codecov -f tests/results/coverage-final.json"
+    "report-coverage": "codecov"
   },
   "husky": {
     "hooks": {
