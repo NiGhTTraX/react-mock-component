@@ -1,5 +1,5 @@
 {
-  "extends": "@tdd-buffet/tsconfig/src/tsconfig",
+  "extends": "@tdd-buffet/tsconfig",
 
   "compilerOptions": {
     "jsx": "react",
