@@ -28,6 +28,7 @@
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json",
     "prepublishOnly": "yarn run build",
+    "release": "standard-version",
     "lint": "eslint --ext ts,tsx,js .",
     "test": "tdd-buffet test --coverage",
     "report-coverage": "codecov"
@@ -53,6 +54,7 @@
     "eslint": "~7.20.0",
     "react": "~17.0.0",
     "react-dom": "~17.0.0",
+    "standard-version": "~9.1.1",
     "tdd-buffet": "~2.1.0",
     "typescript": "~4.1.0"
   }
