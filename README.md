@@ -158,6 +158,8 @@ unmount();
 console.log(Mock.mounted); // false
 ```
 
+The flag will be cleared when [resetting the mock](#reset), even if the component is still mounted.
+
 ### `renderCalls: Props[]`
 
 Get all the props for all the renders of the mock.
@@ -191,4 +193,23 @@ render(<Mock foo="bar" />); // will render null
 render(<Mock foo="baz" />); // will render null
 
 Mock.lastProps // { foo: 'baz' }
+```
+
+### `reset()`
+
+Clears the render history.
+
+```typescript jsx
+import createReactMock from 'react-mock-component';
+import React from 'react';
+import { render, unmount } from 'react-dom';
+
+const Mock = createReactMock();
+render(<Mock />);
+
+Mock.reset();
+
+console.log(Mock.mounted); // false
+console.log(Mock.rendered); // false
+console.log(Mock.lastProps); // throws an error
 ```

@@ -121,6 +121,15 @@ describe('createReactMock', () => {
     expect(Stub.rendered).to.be.false;
   });
 
+  it('should reset the mounted flag', function () {
+    const Stub = createReactMock();
+
+    $render(<Stub />);
+    Stub.reset();
+
+    expect(Stub.mounted).to.be.false;
+  });
+
   it('should return the original stub after an expectation', function () {
     const Stub = createReactMock<BarProps>();
 

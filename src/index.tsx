@@ -155,6 +155,7 @@ export default function createReactMock<Props>({
 
     public static reset() {
       renderStub.reset();
+      mounted = false;
     }
 
     private static wrapPropCallbacks(props: Props) {
