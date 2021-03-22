@@ -34,7 +34,7 @@
     "report-coverage": "codecov"
   },
   "dependencies": {
-    "sinon": "~9.2.0"
+    "sinon": "~10.0.0"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
