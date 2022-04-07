@@ -37,7 +37,7 @@
     "sinon": "~13.0.0"
   },
   "peerDependencies": {
-    "@types/react": "^16.8.0 || ^17.0.0",
+    "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },
@@ -47,7 +47,7 @@
     "@tdd-buffet/react": "~2.0.0",
     "@tdd-buffet/tsconfig": "~1.0.4",
     "@types/node": "~16.11.0",
-    "@types/react": "~17.0.0",
+    "@types/react": "~18.0.0",
     "@types/react-dom": "~17.0.0",
     "@types/sinon": "~10.0.0",
     "codecov": "~3.8.0",
