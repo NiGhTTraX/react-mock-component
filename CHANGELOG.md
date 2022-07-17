@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/NiGhTTraX/react-mock-component/compare/v3.0.0...v3.0.1) (2022-07-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sinon to v12 ([e9da553](https://github.com/NiGhTTraX/react-mock-component/commit/e9da553b43b1d807cfad18ea78cffc0241d983e6))
+* **deps:** update dependency sinon to v13 ([5ca53a1](https://github.com/NiGhTTraX/react-mock-component/commit/5ca53a1cb1d98b66bac24b2eb0aa87e348b0d3a3))
+* **deps:** update dependency sinon to v14 ([dd27a32](https://github.com/NiGhTTraX/react-mock-component/commit/dd27a32cd219008223f17ffc5f08c8f90d42fd93))
+* Widen peer deps to include React 18 ([9a4068d](https://github.com/NiGhTTraX/react-mock-component/commit/9a4068d3e53e340cedd32ef45949f39ed9fbab9f))
+
 ## [3.0.0](https://github.com/NiGhTTraX/react-mock-component/compare/v2.3.6...v3.0.0) (2021-07-16)
 
 
