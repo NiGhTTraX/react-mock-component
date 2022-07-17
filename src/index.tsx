@@ -90,7 +90,6 @@ export interface ReactMock<Props> {
   reset: () => void;
 }
 
-// eslint-disable-next-line space-infix-ops
 export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
 
 /**
@@ -190,10 +189,12 @@ export default function createReactMock<Props>({
       return <div>{renderStub(this.props) || null}</div>;
     }
 
+    // eslint-disable-next-line class-methods-use-this
     componentDidMount() {
       mounted = true;
     }
 
+    // eslint-disable-next-line class-methods-use-this
     componentWillUnmount() {
       mounted = false;
     }
