@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { $render, $unmount } from '@tdd-buffet/react';
+import { render } from '@testing-library/react';
 import React, { ComponentType, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import createReactMock from './index';
@@ -31,18 +31,18 @@ describe('createReactMock', () => {
     const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 42 }).renders('I am Bar');
 
-    const $foo = $render(<Foo Bar={Bar} />);
+    const { container } = render(<Foo Bar={Bar} />);
 
-    expect($foo.text()).toContain('I am Bar');
+    expect(container.textContent).toContain('I am Bar');
   });
 
   it('should stub render calls based on props', () => {
     const Bar = createReactMock<BarProps>();
     Bar.withProps({ bar: 42 }).renders((props) => props.bar);
 
-    const $foo = $render(<Foo Bar={Bar} />);
+    const { container } = render(<Foo Bar={Bar} />);
 
-    expect($foo.text()).toContain('42');
+    expect(container.textContent).toContain('42');
   });
 
   it('should stub multiple render calls', function () {
@@ -50,17 +50,17 @@ describe('createReactMock', () => {
     Bar.withProps({ bar: 1 }).renders('call 1');
     Bar.withProps({ bar: 2 }).renders('call 2');
 
-    let $foo = $render(<Foo Bar={Bar} testbar={1} />);
-    expect($foo.text()).toContain('call 1');
+    let $foo = render(<Foo Bar={Bar} testbar={1} />);
+    expect($foo.container.textContent).toContain('call 1');
 
-    $foo = $render(<Foo Bar={Bar} testbar={2} />);
-    expect($foo.text()).toContain('call 2');
+    $foo = render(<Foo Bar={Bar} testbar={2} />);
+    expect($foo.container.textContent).toContain('call 2');
   });
 
   it('should spy on render calls', function () {
     const Bar = createReactMock<BarProps>();
 
-    $render(<Foo Bar={Bar} />);
+    render(<Foo Bar={Bar} />);
 
     expect(Bar.renderedWith({ bar: 42 })).toBeTruthy();
     expect(Bar.renderedWith({ bar: 43 })).toBeFalsy();
@@ -69,7 +69,7 @@ describe('createReactMock', () => {
   it('should expose the last received props', function () {
     const Bar = createReactMock<BarProps>();
 
-    $render(<Foo Bar={Bar} />);
+    render(<Foo Bar={Bar} />);
 
     expect(Bar.lastProps).toEqual({ bar: 42 });
   });
@@ -84,18 +84,18 @@ describe('createReactMock', () => {
     const Bar = createReactMock<BarProps>();
 
     expect(Bar.rendered).toBeFalsy();
-    $render(<Foo Bar={Bar} />);
+    render(<Foo Bar={Bar} />);
     expect(Bar.rendered).toBeTruthy();
   });
 
   it('should expose if it is currently rendered', () => {
     const Mock = createReactMock();
 
-    $render(<Mock />);
+    const { unmount } = render(<Mock />);
 
     expect(Mock.mounted).toBeTruthy();
 
-    $unmount();
+    unmount();
 
     expect(Mock.mounted).toBeFalsy();
   });
@@ -103,8 +103,8 @@ describe('createReactMock', () => {
   it('should expose all the received props', function () {
     const Bar = createReactMock<BarProps>();
 
-    $render(<Foo Bar={Bar} testbar={1} />);
-    $render(<Foo Bar={Bar} testbar={2} />);
+    render(<Foo Bar={Bar} testbar={1} />);
+    render(<Foo Bar={Bar} testbar={2} />);
 
     expect(Bar.renderCalls).toEqual([{ bar: 1 }, { bar: 2 }]);
   });
@@ -113,7 +113,7 @@ describe('createReactMock', () => {
     const Stub = createReactMock();
     Stub.withProps({}).renders(<span>foo</span>);
 
-    $render(<Stub />);
+    render(<Stub />);
     Stub.reset();
 
     expect(Stub.rendered).toBeFalsy();
@@ -122,7 +122,7 @@ describe('createReactMock', () => {
   it('should reset the mounted flag', function () {
     const Stub = createReactMock();
 
-    $render(<Stub />);
+    render(<Stub />);
     Stub.reset();
 
     expect(Stub.mounted).toBeFalsy();
@@ -136,11 +136,11 @@ describe('createReactMock', () => {
       .withProps({ bar: 2 })
       .renders('2');
 
-    let $chainedStub = $render(<ChainedStub bar={1} />);
-    expect($chainedStub.text()).toEqual('1');
+    let $chainedStub = render(<ChainedStub bar={1} />);
+    expect($chainedStub.container.textContent).toEqual('1');
 
-    $chainedStub = $render(<ChainedStub bar={2} />);
-    expect($chainedStub.text()).toEqual('2');
+    $chainedStub = render(<ChainedStub bar={2} />);
+    expect($chainedStub.container.textContent).toEqual('2');
   });
 
   it('should check children', () => {
@@ -160,7 +160,7 @@ describe('createReactMock', () => {
       ),
     }).renders(<span>it really worked</span>);
 
-    const $chainedStub = $render(
+    const { container } = render(
       <Stub foo={1}>
         <Stub foo={2}>
           <span>children</span>
@@ -168,7 +168,7 @@ describe('createReactMock', () => {
       </Stub>
     );
 
-    expect($chainedStub.text()).toContain('it really worked');
+    expect(container.textContent).toContain('it really worked');
     expect(
       Stub.renderedWith({
         children: (
@@ -195,15 +195,17 @@ describe('createReactMock', () => {
       const M = createReactMock<MultipleProps>();
       M.withProps({ nested: { foo: { bar: 3 } } }).renders('foobar');
 
-      const $x = $render(<M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />);
+      const { container } = render(
+        <M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />
+      );
 
-      expect($x.text()).toContain('foobar');
+      expect(container.textContent).toContain('foobar');
     });
 
     it('should spy on render calls', function () {
       const M = createReactMock<MultipleProps>();
 
-      $render(<M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />);
+      render(<M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />);
 
       expect(M.renderedWith({ nested: { foo: { bar: 3 } } })).toBeTruthy();
     });
@@ -244,7 +246,7 @@ describe('createReactMock', () => {
 
     it('should wrap last prop calls in act', () => {
       const Child = createReactMock<ChildProps>();
-      $render(<HookyComponents Child={Child} />);
+      render(<HookyComponents Child={Child} />);
 
       Child.renderCalls[0].onSubmit(-1);
       expect(Child.renderedWith({ someState: -1 })).toBeTruthy();
@@ -256,7 +258,7 @@ describe('createReactMock', () => {
     it('should opt out of wrapping last prop calls in act', () => {
       const Child = createReactMock<ChildProps>({ wrapInAct: false });
 
-      $render(<Child onSubmit={() => () => {}} someState={23} />);
+      render(<Child onSubmit={() => () => {}} someState={23} />);
 
       act(() => {
         Child.renderCalls[0].onSubmit(-1);
