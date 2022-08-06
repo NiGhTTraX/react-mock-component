@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import { match, stub } from 'sinon';
 import { act } from 'react-dom/test-utils';
+import { match, stub } from 'sinon';
 
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
@@ -13,7 +13,7 @@ export interface ReactMockExpectation<Props> {
    *
    * @see withProps
    *
-   * If there's no matching mocked return calls the component will render an
+   * If there are no matching expectations the component will render an
    * empty div.
    */
   renders: (jsx: ReactNode | ((props: Props) => ReactNode)) => ReactStub<Props>;
@@ -86,11 +86,15 @@ export interface ReactMock<Props> {
 
   /**
    * Clear all expectations and reset render history.
+   *
+   * @see {@link resetAll} Consider using `resetAll()` in your test setup.
    */
   reset: () => void;
 }
 
 export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
+
+const stubs: ReactStub<any>[] = [];
 
 /**
  * Create a mock component of the given type.
@@ -107,7 +111,7 @@ export default function createReactMock<Props>({
   const renderStub = stub();
   let mounted = false;
 
-  return class Stub extends React.Component<Props> {
+  const Stub = class Stub extends React.Component<Props> {
     public static withProps(
       expectedProps: DeepPartial<Props>
     ): ReactMockExpectation<Props> {
@@ -199,4 +203,24 @@ export default function createReactMock<Props>({
       mounted = false;
     }
   };
+
+  stubs.push(Stub);
+
+  return Stub;
 }
+
+/**
+ * Reset all mocks.
+ *
+ * @example
+ * import { resetAll } from 'react-mock-component';
+ *
+ * beforeEach(() => {
+ *   resetAll();
+ * });
+ */
+export const resetAll = () => {
+  stubs.forEach((stub) => {
+    stub.reset();
+  });
+};

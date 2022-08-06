@@ -2,7 +2,7 @@
 import { render } from '@testing-library/react';
 import React, { ComponentType, useState } from 'react';
 import { act } from 'react-dom/test-utils';
-import createReactMock from './index';
+import createReactMock, { resetAll } from './index';
 
 describe('createReactMock', () => {
   interface BarProps {
@@ -126,6 +126,19 @@ describe('createReactMock', () => {
     Stub.reset();
 
     expect(Stub.mounted).toBeFalsy();
+  });
+
+  it('should reset all mocks', function () {
+    const Stub1 = createReactMock();
+    const Stub2 = createReactMock();
+
+    render(<Stub1 />);
+    render(<Stub2 />);
+
+    resetAll();
+
+    expect(Stub1.mounted).toBeFalsy();
+    expect(Stub2.mounted).toBeFalsy();
   });
 
   it('should return the original stub after an expectation', function () {

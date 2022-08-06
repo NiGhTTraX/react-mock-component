@@ -213,3 +213,15 @@ console.log(Mock.mounted); // false
 console.log(Mock.rendered); // false
 console.log(Mock.lastProps); // throws an error
 ```
+
+## `resetAll()`
+
+Clears the render history for all created mocks. You can call this in your global test setup.
+
+```typescript
+import { resetAll } from 'react-mock-component';
+
+beforeEach(() => {
+  resetAll();
+});
+```
