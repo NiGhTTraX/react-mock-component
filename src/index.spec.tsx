@@ -23,6 +23,7 @@ describe('createReactMock', () => {
 
     render() {
       const { Bar, testbar } = this.props;
+
       return <Bar bar={testbar as number} />;
     }
   }
