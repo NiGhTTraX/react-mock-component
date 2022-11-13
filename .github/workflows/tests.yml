@@ -31,6 +31,7 @@ jobs:
 
       - name: Test
         run: pnpm run test
+        shell: bash
 
       - name: Coverage
         uses: codecov/codecov-action@v3
