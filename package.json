@@ -30,7 +30,7 @@
     "prepublishOnly": "pnpm run build",
     "release": "standard-version",
     "lint": "eslint --ext ts,tsx,js .",
-    "test": "jest --coverage"
+    "test": "jest --coverage --maxWorkers=2"
   },
   "dependencies": {
     "sinon": "~14.0.0"
