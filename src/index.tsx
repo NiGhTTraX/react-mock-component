@@ -167,7 +167,7 @@ export default function createReactMock<Props extends object>({
           ...acc,
 
           [prop]: this.wrapCallback(
-            // @ts-ignore because Props is generic so can't be indexed
+            // @ts-expect-error because Props is generic so can't be indexed
             props[prop]
           ),
         }),
