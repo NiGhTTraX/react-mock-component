@@ -94,6 +94,8 @@ export interface ReactMock<Props> {
 
 export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
 
+// The stub props type is in a contravariant position, so we have to use any.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const stubs: ReactStub<any>[] = [];
 
 /**
@@ -175,7 +177,7 @@ export default function createReactMock<Props extends object>({
       ) as Props;
     }
 
-    private static wrapCallback(prop: any) {
+    private static wrapCallback(prop: unknown) {
       if (typeof prop !== 'function') {
         return prop;
       }
@@ -184,7 +186,7 @@ export default function createReactMock<Props extends object>({
         return prop;
       }
 
-      return (...args: any[]) => act(() => prop(...args));
+      return (...args: unknown[]) => act(() => prop(...args));
     }
 
     render() {

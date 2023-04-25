@@ -231,8 +231,8 @@ describe('createReactMock', () => {
     const originalError = console.error;
 
     beforeEach(() => {
-      console.error = (...args: any[]) => {
-        if (/act/.test(args[0])) {
+      console.error = (...args: unknown[]) => {
+        if (typeof args[0] === 'string' && /act/.test(args[0])) {
           throw new Error(args[0]);
         }
 
