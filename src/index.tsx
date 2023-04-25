@@ -28,7 +28,7 @@ export interface ReactMock<Props> {
    *
    * @param expected The expected props will be shallowly matched against
    *   the props received by the component. They can be a subset of the
-   *   props so as to not expose private handlers e.g. when a parent
+   *   props to not expose private handlers e.g. when a parent
    *   component sends a private onClick handler to a Button component.
    */
   withProps: (expected: DeepPartial<Props>) => ReactMockExpectation<Props>;
