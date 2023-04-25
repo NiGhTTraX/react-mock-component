@@ -190,7 +190,7 @@ export default function createReactMock<Props extends {}>({
     render() {
       // In case there were no expectations set on the stub (spy behavior) we
       // return something that won't make React throw its hands in the air.
-      return <div>{renderStub(this.props) || null}</div>;
+      return renderStub(this.props);
     }
 
     // eslint-disable-next-line class-methods-use-this

@@ -34,7 +34,7 @@ describe('createReactMock', () => {
 
     const { container } = render(<Foo Bar={Bar} />);
 
-    expect(container.textContent).toContain('I am Bar');
+    expect(container.innerHTML).toEqual('I am Bar');
   });
 
   it('should stub render calls based on props', () => {
@@ -43,7 +43,7 @@ describe('createReactMock', () => {
 
     const { container } = render(<Foo Bar={Bar} />);
 
-    expect(container.textContent).toContain('42');
+    expect(container.innerHTML).toEqual('42');
   });
 
   it('should stub multiple render calls', function () {
@@ -61,7 +61,9 @@ describe('createReactMock', () => {
   it('should spy on render calls', function () {
     const Bar = createReactMock<BarProps>();
 
-    render(<Foo Bar={Bar} />);
+    const { container } = render(<Foo Bar={Bar} />);
+
+    expect(container.innerHTML).toEqual('');
 
     expect(Bar.renderedWith({ bar: 42 })).toBeTruthy();
     expect(Bar.renderedWith({ bar: 43 })).toBeFalsy();
