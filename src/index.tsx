@@ -103,7 +103,7 @@ const stubs: ReactStub<any>[] = [];
  *   so you don't have to when calling them from `lastProps`. If you want
  *   to opt out of this pass `wrapInAct: false`.
  */
-export default function createReactMock<Props extends {}>({
+export default function createReactMock<Props extends object>({
   wrapInAct = true,
 }: {
   wrapInAct?: boolean;
