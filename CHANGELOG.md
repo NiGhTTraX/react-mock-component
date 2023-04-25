@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/NiGhTTraX/react-mock-component/compare/v3.1.0...v3.1.1) (2023-04-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sinon to v15 ([95a1c75](https://github.com/NiGhTTraX/react-mock-component/commit/95a1c75d5def8c05f3141c67fa6c335a834c172d))
+* Remove `<div>` element from stub output ([cc6afa9](https://github.com/NiGhTTraX/react-mock-component/commit/cc6afa95ac4395a403af87dece91a95e38fea110))
+
 ## [3.1.0](https://github.com/NiGhTTraX/react-mock-component/compare/v3.0.2...v3.1.0) (2022-08-06)
 
 
