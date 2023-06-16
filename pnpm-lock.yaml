@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -14,8 +14,8 @@ devDependencies:
     specifier: ~12.0.0-alpha.3
     version: 12.0.0-alpha.3(eslint@8.42.0)(typescript@5.1.3)
   '@tdd-buffet/jest-config':
-    specifier: ~5.0.3
-    version: 5.0.3(@babel/core@7.18.6)(jest@29.5.0)
+    specifier: ~6.0.0
+    version: 6.0.0(@babel/core@7.18.6)(jest@29.5.0)(typescript@5.1.3)
   '@tdd-buffet/tsconfig':
     specifier: ~1.0.5
     version: 1.0.5(typescript@5.1.3)
@@ -95,7 +95,7 @@ packages:
       convert-source-map: 1.8.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
-      json5: 2.2.1
+      json5: 2.2.3
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -847,6 +847,7 @@ packages:
 
   /@sinonjs/fake-timers@10.2.0:
     resolution: {integrity: sha512-OPwQlEdg40HAj5KNF8WW6q2KG4Z+cBCZb3m4ninfTZKaBmbIJodviQsDBoYMPHkOyJJMHnOJo5j2+LKDOhOACg==}
+    deprecated: Use version 10.1.0. Version 10.2.0 has potential breaking issues
     dependencies:
       '@sinonjs/commons': 3.0.0
 
@@ -862,10 +863,11 @@ packages:
     resolution: {integrity: sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==}
     dev: false
 
-  /@tdd-buffet/jest-config@5.0.3(@babel/core@7.18.6)(jest@29.5.0):
-    resolution: {integrity: sha512-g1Wqv+8YhtXnQC3l0TQskSLZuaQBxqiqm7r5LZhStPEkwtV8a1xarg9DabJkjrmq1i44Q7lI3LN8IGpyu3LhKA==}
+  /@tdd-buffet/jest-config@6.0.0(@babel/core@7.18.6)(jest@29.5.0)(typescript@5.1.3):
+    resolution: {integrity: sha512-sEVKt54915psCxok/nzmsjdXH5IaTNagoYXWPiDXeuSaXfqiNyn/ZfqGzLlQ4znN477XRI3Ftsw2BavRfGi9Kg==}
     peerDependencies:
       jest: ^29.0.0
+      typescript: ^5.0.0
     dependencies:
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
@@ -874,8 +876,8 @@ packages:
       jest: 29.5.0(@types/node@18.16.0)
       jest-environment-jsdom: 29.5.0
       jest-runtime: 29.5.0
-      ts-jest: 29.0.3(@babel/core@7.18.6)(@jest/types@29.5.0)(jest@29.5.0)(typescript@5.0.4)
-      typescript: 5.0.4
+      ts-jest: 29.1.0(@babel/core@7.18.6)(@jest/types@29.5.0)(jest@29.5.0)(typescript@5.1.3)
+      typescript: 5.1.3
       whatwg-fetch: 3.6.2
     transitivePeerDependencies:
       - '@babel/core'
@@ -3871,8 +3873,8 @@ packages:
       minimist: 1.2.6
     dev: true
 
-  /json5@2.2.1:
-    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
+  /json5@2.2.3:
+    resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
     hasBin: true
     dev: true
@@ -5194,8 +5196,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-jest@29.0.3(@babel/core@7.18.6)(@jest/types@29.5.0)(jest@29.5.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-Ibygvmuyq1qp/z3yTh9QTwVVAbFdDy/+4BtIQR2sp6baF2SJU/8CKK/hhnGIDY2L90Az2jIqTwZPnN2p+BweiQ==}
+  /ts-jest@29.1.0(@babel/core@7.18.6)(@jest/types@29.5.0)(jest@29.5.0)(typescript@5.1.3):
+    resolution: {integrity: sha512-ZhNr7Z4PcYa+JjMl62ir+zPiNJfXJN6E8hSLnaUKhOgqcn8vb3e537cpkd0FuAfRK3sR1LSqM1MOhliXNgOFPA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
     peerDependencies:
@@ -5204,7 +5206,7 @@ packages:
       babel-jest: ^29.0.0
       esbuild: '*'
       jest: ^29.0.0
-      typescript: '>=4.3'
+      typescript: '>=4.3 <6'
     peerDependenciesMeta:
       '@babel/core':
         optional: true
@@ -5221,11 +5223,11 @@ packages:
       fast-json-stable-stringify: 2.1.0
       jest: 29.5.0(@types/node@18.16.0)
       jest-util: 29.5.0
-      json5: 2.2.1
+      json5: 2.2.3
       lodash.memoize: 4.1.2
       make-error: 1.3.6
       semver: 7.3.7
-      typescript: 5.0.4
+      typescript: 5.1.3
       yargs-parser: 21.0.1
     dev: true
 
@@ -5309,12 +5311,6 @@ packages:
 
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
-    dev: true
-
-  /typescript@5.0.4:
-    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
-    engines: {node: '>=12.20'}
-    hasBin: true
     dev: true
 
   /typescript@5.1.3:
