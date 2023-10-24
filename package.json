@@ -33,7 +33,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "sinon": "~15.1.0"
+    "sinon": "~16.1.0"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0",
