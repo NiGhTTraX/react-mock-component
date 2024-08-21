@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { render } from '@testing-library/react';
-import React, { ComponentType, useState } from 'react';
+import React, { ComponentType, ReactNode, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import createReactMock, { resetAll } from './index';
 
@@ -10,23 +10,11 @@ describe('createReactMock', () => {
   }
 
   interface FooProps {
-    // eslint-disable-next-line no-use-before-define
     Bar: React.ComponentType<BarProps>;
-    testbar?: number;
+    data?: number;
   }
 
-  class Foo extends React.Component<FooProps> {
-    // eslint-disable-next-line react/static-property-placement
-    public static defaultProps: Partial<FooProps> = {
-      testbar: 42,
-    };
-
-    render() {
-      const { Bar, testbar } = this.props;
-
-      return <Bar bar={testbar as number} />;
-    }
-  }
+  const Foo = ({ Bar, data = 42 }: FooProps) => <Bar bar={data} />;
 
   it('should stub render calls', function () {
     const Bar = createReactMock<BarProps>();
@@ -51,10 +39,10 @@ describe('createReactMock', () => {
     Bar.withProps({ bar: 1 }).renders('call 1');
     Bar.withProps({ bar: 2 }).renders('call 2');
 
-    let $foo = render(<Foo Bar={Bar} testbar={1} />);
+    let $foo = render(<Foo Bar={Bar} data={1} />);
     expect($foo.container.textContent).toContain('call 1');
 
-    $foo = render(<Foo Bar={Bar} testbar={2} />);
+    $foo = render(<Foo Bar={Bar} data={2} />);
     expect($foo.container.textContent).toContain('call 2');
   });
 
@@ -106,8 +94,8 @@ describe('createReactMock', () => {
   it('should expose all the received props', function () {
     const Bar = createReactMock<BarProps>();
 
-    render(<Foo Bar={Bar} testbar={1} />);
-    render(<Foo Bar={Bar} testbar={2} />);
+    render(<Foo Bar={Bar} data={1} />);
+    render(<Foo Bar={Bar} data={2} />);
 
     expect(Bar.renderCalls).toEqual([{ bar: 1 }, { bar: 2 }]);
   });
@@ -161,7 +149,7 @@ describe('createReactMock', () => {
 
   it('should check children', () => {
     interface WithChildren {
-      children: JSX.Element;
+      children: ReactNode;
       foo: number;
     }
 
