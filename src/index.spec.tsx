@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { render } from '@testing-library/react';
-import React, { ComponentType, ReactNode, useState } from 'react';
-import { act } from 'react-dom/test-utils';
+import React, { act, ComponentType, ReactNode, useState } from 'react';
 import createReactMock, { resetAll } from './index';
 
 describe('createReactMock', () => {

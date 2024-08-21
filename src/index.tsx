@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import { act } from 'react-dom/test-utils';
+import React, { act, ReactNode } from 'react';
 import { match, stub } from 'sinon';
 
 type DeepPartial<T> = T extends object
