@@ -190,9 +190,9 @@ export default function createReactMock<Props extends object>({
     }
 
     render() {
-      // In case there were no expectations set on the stub (spy behavior) we
-      // return something that won't make React throw its hands in the air.
-      return renderStub(this.props);
+      // The stub will return undefined if it doesn't match any props,
+      // but react<18 doesn't support that.
+      return renderStub(this.props) || null;
     }
 
     // eslint-disable-next-line class-methods-use-this
