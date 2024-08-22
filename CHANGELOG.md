@@ -15,6 +15,14 @@ All notable changes to this project will be documented in this file. See [standa
 * Handle React<18 not supporting `undefined` returns from `render` ([a9591da](https://github.com/NiGhTTraX/react-mock-component/commit/a9591daa242d2b788d6c1d333a516e9afe02b60d))
 * Replace deprecated `act` from `test-utils` ([e5568c0](https://github.com/NiGhTTraX/react-mock-component/commit/e5568c0fec61f13119ffe0d0997d42028d185aba))
 
+### [3.1.2](https://github.com/NiGhTTraX/react-mock-component/compare/v3.1.1...v3.1.2) (2024-08-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sinon to ~15.1.0 ([cbafc48](https://github.com/NiGhTTraX/react-mock-component/commit/cbafc4844758d2edec706e739758f595fa0c5dea))
+* Handle React<18 not supporting `undefined` returns from `render` ([a9591da](https://github.com/NiGhTTraX/react-mock-component/commit/a9591daa242d2b788d6c1d333a516e9afe02b60d))
+
 ### [3.1.1](https://github.com/NiGhTTraX/react-mock-component/compare/v3.1.0...v3.1.1) (2023-04-25)
 
 
