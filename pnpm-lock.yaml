@@ -2462,8 +2462,8 @@ packages:
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  path-to-regexp@1.8.0:
-    resolution: {integrity: sha512-n43JRhlUKUAlibEJhPeir1ncUID16QnEjNpwzNdO3Lm4ywrBpBZ5oLD0I6br9evr1Y9JTqwRtAh7JLoOzAQdVA==}
+  path-to-regexp@1.9.0:
+    resolution: {integrity: sha512-xIp7/apCFJuUHdDLWe8O1HIkb0kQrOMb/0u6FXQjemHn/ii5LrIzU6bdECnsiTF/GjZkMEKg1xdiZwNqDYlZ6g==}
 
   path-type@3.0.0:
     resolution: {integrity: sha512-T2ZUsdZFHgA3u4e5PfPbjd7HDDpxPnQb5jN0SrDsjNSuVXHJqtwTnWqG0B1jZrgmJ/7lj1EmVIByWt1gxGkWvg==}
@@ -3761,19 +3761,19 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  '@nighttrax/eslint-config-base@11.0.0-alpha.2(eslint-plugin-import@2.27.5)(eslint-plugin-prettier@4.2.1(eslint@8.57.0)(prettier@2.8.8))(eslint@8.57.0)(prettier@2.8.8)':
+  '@nighttrax/eslint-config-base@11.0.0-alpha.2(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint-plugin-prettier@4.2.1(eslint@8.57.0)(prettier@2.8.8))(eslint@8.57.0)(prettier@2.8.8)':
     dependencies:
       eslint: 8.57.0
-      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.27.5)(eslint@8.57.0)
+      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint@8.57.0)
       eslint-config-prettier: 8.8.0(eslint@8.57.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0)
       eslint-plugin-prettier: 4.2.1(eslint@8.57.0)(prettier@2.8.8)
       prettier: 2.8.8
 
-  '@nighttrax/eslint-config-react@10.0.0-alpha.0(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0)':
+  '@nighttrax/eslint-config-react@10.0.0-alpha.0(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0)':
     dependencies:
       eslint: 8.57.0
-      eslint-config-airbnb: 19.0.4(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0)
+      eslint-config-airbnb: 19.0.4(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.57.0)
       eslint-plugin-react: 7.32.2(eslint@8.57.0)
@@ -3781,8 +3781,8 @@ snapshots:
 
   '@nighttrax/eslint-config-tsx@12.0.0-alpha.3(eslint@8.57.0)(typescript@5.6.2)':
     dependencies:
-      '@nighttrax/eslint-config-base': 11.0.0-alpha.2(eslint-plugin-import@2.27.5)(eslint-plugin-prettier@4.2.1(eslint@8.57.0)(prettier@2.8.8))(eslint@8.57.0)(prettier@2.8.8)
-      '@nighttrax/eslint-config-react': 10.0.0-alpha.0(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0)
+      '@nighttrax/eslint-config-base': 11.0.0-alpha.2(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint-plugin-prettier@4.2.1(eslint@8.57.0)(prettier@2.8.8))(eslint@8.57.0)(prettier@2.8.8)
+      '@nighttrax/eslint-config-react': 10.0.0-alpha.0(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0)
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/eslint-plugin': 5.57.1(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint@8.57.0)(typescript@5.6.2)
       '@typescript-eslint/parser': 5.57.1(eslint@8.57.0)(typescript@5.6.2)
@@ -4717,7 +4717,7 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
-  eslint-config-airbnb-base@15.0.0(eslint-plugin-import@2.27.5)(eslint@8.57.0):
+  eslint-config-airbnb-base@15.0.0(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 8.57.0
@@ -4726,10 +4726,10 @@ snapshots:
       object.entries: 1.1.5
       semver: 6.3.0
 
-  eslint-config-airbnb@19.0.4(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0):
+  eslint-config-airbnb@19.0.4(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint-plugin-jsx-a11y@6.7.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react@7.32.2(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
-      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.27.5)(eslint@8.57.0)
+      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.57.0)
       eslint-plugin-react: 7.32.2(eslint@8.57.0)
@@ -4763,7 +4763,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.0(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0):
+  eslint-module-utils@2.8.0(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.2(eslint-plugin-import@2.27.5)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -4783,7 +4783,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.7
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.2)(eslint@8.57.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.57.1(eslint@8.57.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.2(eslint-plugin-import@2.27.5)(eslint@8.57.0))(eslint@8.57.0)
       has: 1.0.3
       is-core-module: 2.11.0
       is-glob: 4.0.3
@@ -6203,7 +6203,7 @@ snapshots:
       '@sinonjs/fake-timers': 10.2.0
       '@sinonjs/text-encoding': 0.7.1
       just-extend: 4.2.1
-      path-to-regexp: 1.8.0
+      path-to-regexp: 1.9.0
 
   node-int64@0.4.0: {}
 
@@ -6379,7 +6379,7 @@ snapshots:
 
   path-parse@1.0.7: {}
 
-  path-to-regexp@1.8.0:
+  path-to-regexp@1.9.0:
     dependencies:
       isarray: 0.0.1
 
