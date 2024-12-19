@@ -1,0 +1,11 @@
+{
+  "extends": ["./tsconfig.app.json"],
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "**/*.spec.tsx",
+    "vitest.config.mts"
+  ],
+  "exclude": []
+}

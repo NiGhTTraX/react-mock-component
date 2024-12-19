@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+
+    "target": "ES6",
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "types": [],
+    "lib": ["ES6", "DOM"],
+    "jsx": "react",
+    "skipLibCheck": true,
+
+    "strict": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false
+  },
+  "include": ["src"],
+  "exclude": [
+    "**/*.spec.tsx"
+  ]
+}

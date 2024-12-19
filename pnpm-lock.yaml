@@ -15,9 +15,6 @@ importers:
       '@eslint/js':
         specifier: ~9.16.0
         version: 9.16.0
-      '@tdd-buffet/tsconfig':
-        specifier: ~1.0.5
-        version: 1.0.5(typescript@5.7.2)
       '@testing-library/dom':
         specifier: ~10.4.0
         version: 10.4.0
@@ -546,11 +543,6 @@ packages:
 
   '@sinonjs/text-encoding@0.7.1':
     resolution: {integrity: sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==}
-
-  '@tdd-buffet/tsconfig@1.0.5':
-    resolution: {integrity: sha512-7S3SwOnZG0js7FkzSbuysdbrKfeHE48tneN6K/sHDhSvTUFK+gpskEPb3GScEpxvmnoXm+DP7Swa/VZs0bWGQQ==}
-    peerDependencies:
-      typescript: ^3.8.3 || ^4.0.0 || ^5.0.0
 
   '@testing-library/dom@10.4.0':
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
@@ -2670,10 +2662,6 @@ snapshots:
       type-detect: 4.0.8
 
   '@sinonjs/text-encoding@0.7.1': {}
-
-  '@tdd-buffet/tsconfig@1.0.5(typescript@5.7.2)':
-    dependencies:
-      typescript: 5.7.2
 
   '@testing-library/dom@10.4.0':
     dependencies:

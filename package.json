@@ -30,7 +30,8 @@
     "prepublishOnly": "pnpm run build",
     "release": "standard-version",
     "lint": "eslint --quiet .",
-    "test": "vitest --coverage"
+    "test": "vitest --coverage",
+    "posttest": "tsc -p tsconfig.test.json"
   },
   "dependencies": {
     "sinon": "~15.1.0"
@@ -42,7 +43,6 @@
   },
   "devDependencies": {
     "@eslint/js": "~9.16.0",
-    "@tdd-buffet/tsconfig": "~1.0.5",
     "@testing-library/dom": "~10.4.0",
     "@testing-library/react": "~16.1.0",
     "@types/node": "~22.10.0",

@@ -1,8 +1,7 @@
 {
-  "extends": "@tdd-buffet/tsconfig",
-
-  "compilerOptions": {
-    "jsx": "react",
-    "types": []
-  }
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.test.json" }
+  ]
 }
