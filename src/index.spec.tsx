@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import { render } from '@testing-library/react';
-import React, { act, ComponentType, ReactNode, useState } from 'react';
+import type { ComponentType, ReactNode } from 'react';
+import React, { act, useState } from 'react';
 import createReactMock, { resetAll } from './index';
 
 describe('createReactMock', () => {
@@ -168,7 +168,7 @@ describe('createReactMock', () => {
         <Stub foo={2}>
           <span>children</span>
         </Stub>
-      </Stub>
+      </Stub>,
     );
 
     expect(container.textContent).toContain('it really worked');
@@ -179,7 +179,7 @@ describe('createReactMock', () => {
             <span>children</span>
           </Stub>
         ),
-      })
+      }),
     ).toBeTruthy();
   });
 
@@ -199,7 +199,7 @@ describe('createReactMock', () => {
       M.withProps({ nested: { foo: { bar: 3 } } }).renders('foobar');
 
       const { container } = render(
-        <M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />
+        <M foo1={1} foo2={2} nested={{ foo: { bar: 3 } }} />,
       );
 
       expect(container.textContent).toContain('foobar');

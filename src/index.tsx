@@ -1,4 +1,5 @@
-import React, { act, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { act } from 'react';
 import { match, stub } from 'sinon';
 
 type DeepPartial<T> = T extends object
@@ -114,7 +115,7 @@ export default function createReactMock<Props extends object>({
 
   const Stub = class Stub extends React.Component<Props> {
     public static withProps(
-      expectedProps: DeepPartial<Props>
+      expectedProps: DeepPartial<Props>,
     ): ReactMockExpectation<Props> {
       const expectation = renderStub.withArgs(match(expectedProps as object));
 
@@ -169,10 +170,10 @@ export default function createReactMock<Props extends object>({
 
           [prop]: this.wrapCallback(
             // @ts-expect-error because Props is generic so can't be indexed
-            props[prop]
+            props[prop],
           ),
         }),
-        {}
+        {},
       ) as Props;
     }
 
@@ -194,12 +195,10 @@ export default function createReactMock<Props extends object>({
       return renderStub(this.props) || null;
     }
 
-    // eslint-disable-next-line class-methods-use-this
     componentDidMount() {
       mounted = true;
     }
 
-    // eslint-disable-next-line class-methods-use-this
     componentWillUnmount() {
       mounted = false;
     }
