@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import type { ComponentType, ReactNode } from 'react';
 import React, { act, useState } from 'react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import createReactMock, { resetAll } from './index';
+import createReactMock, { resetAll } from './index.js';
 
 // @ts-expect-error https://react.dev/reference/react/act#error-the-current-testing-environment-is-not-configured-to-support-act
 global.IS_REACT_ACT_ENVIRONMENT = true;
