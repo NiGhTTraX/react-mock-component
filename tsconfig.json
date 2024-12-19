@@ -3,6 +3,6 @@
 
   "compilerOptions": {
     "jsx": "react",
-    "types": ["jest"]
+    "types": []
   }
 }
