@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0-beta.0](https://github.com/NiGhTTraX/react-mock-component/compare/v4.0.0...v4.1.0-beta.0) (2024-12-19)
+
+
+### Features
+
+* Publish ESM, alongside CJS ([2c5992b](https://github.com/NiGhTTraX/react-mock-component/commit/2c5992b073931ac58dc27d1f4d777eb8919230e6))
+* Support React 19 ([043a8fd](https://github.com/NiGhTTraX/react-mock-component/commit/043a8fdffa3147f9aa613eaf6309a3d27d34669b))
+
+### [3.1.2](https://github.com/NiGhTTraX/react-mock-component/compare/v3.1.1...v3.1.2) (2024-08-21)
+
 ## [4.0.0](https://github.com/NiGhTTraX/react-mock-component/compare/v3.1.1...v4.0.0) (2024-08-21)
 
 
