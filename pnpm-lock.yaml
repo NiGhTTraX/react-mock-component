@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       sinon:
-        specifier: ~15.1.2
-        version: 15.1.2
+        specifier: ~15.2.0
+        version: 15.2.0
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ~0.17.1
@@ -2311,8 +2311,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  sinon@15.1.2:
-    resolution: {integrity: sha512-uG1pU54Fis4EfYOPoEi13fmRHgZNg/u+3aReSEzHsN52Bpf+bMVfsBQS5MjouI+rTuG6UBIINlpuuO2Epr7SiA==}
+  sinon@15.2.0:
+    resolution: {integrity: sha512-nPS85arNqwBXaIsFCkolHjGIkFo+Oxu9vbgmBJizLAhqe6P2o3Qmj3KCUoRkfhHtvgDhZdWD3risLHAUJ8npjw==}
     deprecated: 16.1.1
 
   skin-tone@2.0.0:
@@ -4917,7 +4917,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  sinon@15.1.2:
+  sinon@15.2.0:
     dependencies:
       '@sinonjs/commons': 3.0.1
       '@sinonjs/fake-timers': 10.3.0

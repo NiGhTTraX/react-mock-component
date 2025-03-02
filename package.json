@@ -45,7 +45,7 @@
     "posttest": "tsc -p tsconfig.test.json"
   },
   "dependencies": {
-    "sinon": "~15.1.2"
+    "sinon": "~15.2.0"
   },
   "peerDependencies": {
     "@types/react": "^18.0.0 || ^19.0.0",
