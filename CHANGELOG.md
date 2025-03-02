@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/NiGhTTraX/react-mock-component/compare/v4.1.0...v4.1.1) (2025-03-02)
+
+
+### Bug Fixes
+
+* Fix jest compatibility with ESM ([5a1a4ba](https://github.com/NiGhTTraX/react-mock-component/commit/5a1a4ba82ae4fdfb1f2be58186d99ee6ded4b997))
+
 ## [4.1.0](https://github.com/NiGhTTraX/react-mock-component/compare/v4.1.0-beta.0...v4.1.0) (2025-03-02)
 
 
