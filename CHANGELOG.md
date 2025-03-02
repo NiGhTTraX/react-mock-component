@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/NiGhTTraX/react-mock-component/compare/v4.1.0-beta.0...v4.1.0) (2025-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sinon to ~15.2.0 ([#360](https://github.com/NiGhTTraX/react-mock-component/issues/360)) ([3cb071a](https://github.com/NiGhTTraX/react-mock-component/commit/3cb071a7e74a208d165582345e1b532d7ec99995))
+* **deps:** update dependency sinon to v19 ([9b105d7](https://github.com/NiGhTTraX/react-mock-component/commit/9b105d760e29694ff48a65ab1885bf41c3cec1ad))
+
 ## [4.1.0-beta.0](https://github.com/NiGhTTraX/react-mock-component/compare/v4.0.0...v4.1.0-beta.0) (2024-12-19)
 
 
