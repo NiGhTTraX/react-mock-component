@@ -7,5 +7,12 @@
   "automerge": true,
   "automergeType": "branch",
   "minimumReleaseAge": "14 days",
-  "internalChecksFilter": "strict"
+  "internalChecksFilter": "strict",
+
+  "packageRules": [
+    {
+      "matchPackageNames": ["sinon"],
+      "enabled": false
+    }
+  ]
 }
