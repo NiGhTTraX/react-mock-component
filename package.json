@@ -75,5 +75,5 @@
     "typescript-eslint": "~8.26.0",
     "vitest": "~3.0.7"
   },
-  "packageManager": "pnpm@10.6.3"
+  "packageManager": "pnpm@10.6.4"
 }
