@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
-import React, { act } from 'react';
+import type { ComponentClass, ReactNode } from 'react';
+import { act, Component } from 'react';
 import { match, stub } from 'sinon';
 
 type DeepPartial<T> = T extends object
@@ -92,7 +92,7 @@ export interface ReactMock<Props> {
   reset: () => void;
 }
 
-export type ReactStub<Props> = React.ComponentClass<Props> & ReactMock<Props>;
+export type ReactStub<Props> = ComponentClass<Props> & ReactMock<Props>;
 
 // The stub props type is in a contravariant position, so we have to use any.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -113,7 +113,7 @@ export default function createReactMock<Props extends object>({
   const renderStub = stub();
   let mounted = false;
 
-  const Stub = class Stub extends React.Component<Props> {
+  const Stub = class Stub extends Component<Props> {
     public static withProps(
       expectedProps: DeepPartial<Props>,
     ): ReactMockExpectation<Props> {

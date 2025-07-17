@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import type { ComponentType, ReactNode } from 'react';
-import React, { act, useState } from 'react';
+import type { ComponentType, FC, ReactNode } from 'react';
+import { act, useState } from 'react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import createReactMock, { resetAll } from './index.js';
 
@@ -13,7 +13,7 @@ describe('createReactMock', () => {
   }
 
   interface FooProps {
-    Bar: React.ComponentType<BarProps>;
+    Bar: ComponentType<BarProps>;
     data?: number;
   }
 
@@ -240,10 +240,10 @@ describe('createReactMock', () => {
       someState: number;
     }
     interface HookyProps {
-      Child: React.ComponentType<ChildProps>;
+      Child: ComponentType<ChildProps>;
     }
 
-    const HookyComponents: React.FC<HookyProps> = ({ Child }) => {
+    const HookyComponents: FC<HookyProps> = ({ Child }) => {
       const [someState, setSomeState] = useState(42);
 
       return (
