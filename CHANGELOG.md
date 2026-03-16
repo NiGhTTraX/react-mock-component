@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/NiGhTTraX/react-mock-component/compare/v4.1.1...v5.0.0) (2026-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* This lib now requires an environment that supports
+at minimum ES2020 features.
+
+### build
+
+* Target ES2020 ([7eddbf8](https://github.com/NiGhTTraX/react-mock-component/commit/7eddbf81dcdbcc44680c6facbc8d7e2dc9d46c45))
+
 ### [4.1.1](https://github.com/NiGhTTraX/react-mock-component/compare/v4.1.0...v4.1.1) (2025-03-02)
 
 
