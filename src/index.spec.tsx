@@ -218,7 +218,7 @@ describe('createReactMock', () => {
     });
   });
 
-  describe('hooks', () => {
+  describe('act', () => {
     const originalError = console.error;
 
     beforeEach(() => {
@@ -236,7 +236,7 @@ describe('createReactMock', () => {
     });
 
     interface ChildProps {
-      onSubmit: (foo: number) => void;
+      onSubmit: (foo: number) => Promise<void>;
       someState: number;
     }
     interface HookyProps {
@@ -247,29 +247,33 @@ describe('createReactMock', () => {
       const [someState, setSomeState] = useState(42);
 
       return (
-        <Child someState={someState} onSubmit={(foo) => setSomeState(foo)} />
+        <Child
+          someState={someState}
+          onSubmit={async (foo) => {
+            await new Promise((resolve) => setTimeout(resolve, 1));
+            setSomeState(foo);
+          }}
+        />
       );
     };
 
-    it('should wrap last prop calls in act', () => {
+    it('should wrap last prop calls in act', async () => {
       const Child = createReactMock<ChildProps>();
       render(<HookyComponents Child={Child} />);
 
-      Child.renderCalls[0].onSubmit(-1);
+      await Child.renderCalls[0].onSubmit(-1);
       expect(Child.renderedWith({ someState: -1 })).toBeTruthy();
 
-      Child.lastProps.onSubmit(23);
+      await Child.lastProps.onSubmit(23);
       expect(Child.renderedWith({ someState: 23 })).toBeTruthy();
     });
 
-    it('should opt out of wrapping last prop calls in act', () => {
+    it('should opt out of wrapping last prop calls in act', async () => {
       const Child = createReactMock<ChildProps>({ wrapInAct: false });
 
-      render(<Child onSubmit={() => () => {}} someState={23} />);
+      render(<Child onSubmit={async () => {}} someState={23} />);
 
-      act(() => {
-        Child.renderCalls[0].onSubmit(-1);
-      });
+      await act(() => Child.renderCalls[0].onSubmit(-1));
     });
   });
 });
