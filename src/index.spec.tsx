@@ -111,6 +111,9 @@ describe('createReactMock', () => {
     Stub.reset();
 
     expect(Stub.rendered).toBeFalsy();
+
+    const { container } = render(<Stub />);
+    expect(container.textContent).toEqual('');
   });
 
   it('should reset the mounted flag', function () {
