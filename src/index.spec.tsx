@@ -77,7 +77,7 @@ describe('createReactMock', () => {
     expect(() => Bar.lastProps).toThrow('Component never rendered!');
   });
 
-  it('should expose whether it was rendered', function () {
+  it('should expose if it was rendered', function () {
     const Bar = createReactMock<BarProps>();
 
     expect(Bar.rendered).toBeFalsy();
@@ -85,7 +85,7 @@ describe('createReactMock', () => {
     expect(Bar.rendered).toBeTruthy();
   });
 
-  it('should expose if it is currently rendered', () => {
+  it('should expose if it is currently mounted', () => {
     const Mock = createReactMock();
 
     const { unmount } = render(<Mock />);

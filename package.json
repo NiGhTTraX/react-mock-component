@@ -45,7 +45,7 @@
     "posttest": "tsc -p tsconfig.test.json"
   },
   "dependencies": {
-    "sinon": "~15.1.2"
+    "lodash": "~4.17.23"
   },
   "peerDependencies": {
     "@types/react": "^18.0.0 || ^19.0.0",
@@ -57,9 +57,9 @@
     "@nighttrax/eslint-config-tsx": "~12.3.0",
     "@testing-library/dom": "~10.4.0",
     "@testing-library/react": "~16.3.0",
+    "@types/lodash": "~4.17.24",
     "@types/react": "~19.2.0",
     "@types/react-dom": "~19.2.0",
-    "@types/sinon": "~21.0.0",
     "@vitejs/plugin-react": "~5.1.0",
     "@vitest/coverage-v8": "~4.0.0",
     "eslint": "~9.39.0",

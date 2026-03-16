@@ -4,11 +4,5 @@
   "automerge": true,
   "automergeType": "branch",
   "minimumReleaseAge": "14 days",
-  "internalChecksFilter": "strict",
-  "packageRules": [
-    {
-      "matchPackageNames": ["sinon"],
-      "enabled": false
-    }
-  ]
+  "internalChecksFilter": "strict"
 }

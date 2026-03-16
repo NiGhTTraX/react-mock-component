@@ -1,6 +1,6 @@
+import _ from 'lodash';
 import type { ComponentClass, ReactNode } from 'react';
 import { act, Component } from 'react';
-import { match, stub } from 'sinon';
 
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
@@ -110,21 +110,19 @@ export default function createReactMock<Props extends object>({
 }: {
   wrapInAct?: boolean;
 } = {}): ReactStub<Props> {
-  const renderStub = stub();
+  let expectations: [
+    DeepPartial<Props>,
+    ReactNode | ((props: Props) => ReactNode),
+  ][] = [];
+  let renderCalls: Props[] = [];
   let mounted = false;
 
   const Stub = class Stub extends Component<Props> {
     public static withProps(
       expectedProps: DeepPartial<Props>,
     ): ReactMockExpectation<Props> {
-      const expectation = renderStub.withArgs(match(expectedProps as object));
-
       const renders = (jsx: ReactNode | ((props: Props) => ReactNode)) => {
-        if (typeof jsx === 'function') {
-          expectation.callsFake((props: Props) => jsx(props));
-        } else {
-          expectation.returns(jsx);
-        }
+        expectations.push([expectedProps, jsx]);
 
         return Stub;
       };
@@ -132,22 +130,22 @@ export default function createReactMock<Props extends object>({
       return { renders };
     }
 
-    public static renderedWith(props: DeepPartial<Props>): boolean {
-      return renderStub.calledWithMatch(props);
+    public static renderedWith(expected: DeepPartial<Props>): boolean {
+      return renderCalls.some((actual) => _.isMatch(actual, expected));
     }
 
     public static get lastProps() {
-      if (!renderStub.called) {
+      if (!renderCalls.length) {
         throw new Error('Component never rendered!');
       }
 
-      const props: Props = renderStub.lastCall.args[0];
+      const props: Props = renderCalls[renderCalls.length - 1];
 
       return this.wrapPropCallbacks(props);
     }
 
     public static get rendered() {
-      return renderStub.called;
+      return !!renderCalls.length;
     }
 
     public static get mounted() {
@@ -155,11 +153,12 @@ export default function createReactMock<Props extends object>({
     }
 
     public static get renderCalls() {
-      return renderStub.args.map((args) => this.wrapPropCallbacks(args[0]));
+      return renderCalls.map((actual) => this.wrapPropCallbacks(actual));
     }
 
     public static reset() {
-      renderStub.reset();
+      renderCalls = [];
+      expectations = [];
       mounted = false;
     }
 
@@ -190,9 +189,21 @@ export default function createReactMock<Props extends object>({
     }
 
     render() {
-      // The stub will return undefined if it doesn't match any props,
-      // but react<18 doesn't support that.
-      return renderStub(this.props) || null;
+      renderCalls.push(this.props);
+
+      const e = expectations.find((expectation) =>
+        _.isMatch(this.props, expectation[0]),
+      );
+
+      if (!e) {
+        return null;
+      }
+
+      if (typeof e[1] === 'function') {
+        return e[1](this.props);
+      } else {
+        return e[1];
+      }
     }
 
     componentDidMount() {
