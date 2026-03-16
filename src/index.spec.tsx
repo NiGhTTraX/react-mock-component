@@ -42,11 +42,11 @@ describe('createReactMock', () => {
     Bar.withProps({ bar: 1 }).renders('call 1');
     Bar.withProps({ bar: 2 }).renders('call 2');
 
-    let $foo = render(<Foo Bar={Bar} data={1} />);
-    expect($foo.container.textContent).toContain('call 1');
-
-    $foo = render(<Foo Bar={Bar} data={2} />);
+    let $foo = render(<Foo Bar={Bar} data={2} />);
     expect($foo.container.textContent).toContain('call 2');
+
+    $foo = render(<Foo Bar={Bar} data={1} />);
+    expect($foo.container.textContent).toContain('call 1');
   });
 
   it('should spy on render calls', function () {
