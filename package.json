@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "~0.18.2",
-    "@nighttrax/eslint-config-tsx": "~12.3.0",
+    "@nighttrax/eslint-config-tsx": "~12.4.0",
     "@testing-library/dom": "~10.4.1",
     "@testing-library/react": "~16.3.2",
     "@types/lodash": "~4.17.24",
