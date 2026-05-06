@@ -2,7 +2,7 @@
 
 ![Build Status](https://github.com/NiGhTTraX/react-mock-component/workflows/Tests/badge.svg) [![codecov](https://codecov.io/gh/NiGhTTraX/react-mock-component/branch/master/graph/badge.svg)](https://codecov.io/gh/NiGhTTraX/react-mock-component) ![npm type definitions](https://img.shields.io/npm/types/react-mock-component.svg)
 
-Check out the [jest matcher](https://github.com/NiGhTTraX/jest-react-mock) as well.
+Check out the [jest matcher](https://github.com/NiGhTTraX/jest-react-mock) and [vitest matcher](https://github.com/NiGhTTraX/vitest-react-mock) as well.
 
 ---
 
