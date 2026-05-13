@@ -1,2 +1,4 @@
-strictPeerDependencies: true
+allowBuilds:
+  unrs-resolver: false
 autoInstallPeers: false
+strictPeerDependencies: true
