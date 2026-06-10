@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import createReactMock, { resetAll } from './index.js';
 
 // @ts-expect-error https://react.dev/reference/react/act#error-the-current-testing-environment-is-not-configured-to-support-act
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 global.IS_REACT_ACT_ENVIRONMENT = true;
 
 describe('createReactMock', () => {
@@ -229,7 +230,7 @@ describe('createReactMock', () => {
 
     beforeEach(() => {
       console.error = (...args: unknown[]) => {
-        if (typeof args[0] === 'string' && /act/.test(args[0])) {
+        if (typeof args[0] === 'string' && args[0].includes('act')) {
           throw new Error(args[0]);
         }
 
@@ -277,7 +278,14 @@ describe('createReactMock', () => {
     it('should opt out of wrapping last prop calls in act', async () => {
       const Child = createReactMock<ChildProps>({ wrapInAct: false });
 
-      render(<Child onSubmit={async () => {}} someState={23} />);
+      render(
+        <Child
+          onSubmit={async () => {
+            /* empty */
+          }}
+          someState={23}
+        />,
+      );
 
       await act(() => Child.renderCalls[0].onSubmit(-1));
     });

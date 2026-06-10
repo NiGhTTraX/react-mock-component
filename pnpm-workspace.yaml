@@ -1,4 +1,7 @@
 allowBuilds:
   unrs-resolver: false
 autoInstallPeers: false
+minimumReleaseAgeExclude:
+  - '@nighttrax/eslint-config-ts@13.1.1'
+  - '@nighttrax/eslint-config-tsx@13.1.2'
 strictPeerDependencies: true

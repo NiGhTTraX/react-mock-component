@@ -117,6 +117,7 @@ export default function createReactMock<Props extends object>({
   let renderCalls: Props[] = [];
   let mounted = false;
 
+  // eslint-disable-next-line @eslint-react/no-class-component
   const Stub = class Stub extends Component<Props> {
     public static withProps(
       expectedProps: DeepPartial<Props>,
@@ -185,6 +186,7 @@ export default function createReactMock<Props extends object>({
         return prop;
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
       return (...args: unknown[]) => act(() => prop(...args));
     }
 
