@@ -57,7 +57,7 @@
     "@types/react-dom": "~19.2.3",
     "@vitejs/plugin-react": "~6.0.1",
     "@vitest/coverage-v8": "~4.1.0",
-    "eslint": "~10.5.0",
+    "eslint": "~10.6.0",
     "jsdom": "~29.1.0",
     "publint": "~0.3.19",
     "prettier": "~3.8.1",
